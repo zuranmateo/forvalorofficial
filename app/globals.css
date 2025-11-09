@@ -4,7 +4,8 @@
   --background: #2a2321;
   --foreground: #392f2f;
   --primary: #2a2321;
-  --secondary: #d4af37;
+  --textprimary: #d4af37;
+  --secondary: #221c1b;
   --black: #1a1a1a;
 }
 
@@ -12,6 +13,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-textprimary: var(--textprimary);
   --color-secondary: var(--secondary);
   --color-black: var(--black);
   --font-cardinal: var(--cardinal);
@@ -36,10 +38,13 @@ body {
     @apply flex items-center justify-center md:h-screen;
   }
   .header{
-    @apply px-5 py-3 bg-primary shadow-sm text-secondary;
+    @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
   }
   .login-container{
     @apply bg-primary shadow-sm relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32;
+  }
+  .github-login-button{
+    @apply bg-secondary w-full p-4 text-center;
   }
 }
 
