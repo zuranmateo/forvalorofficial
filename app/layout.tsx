@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 const cardinal = localFont({
   src:[
     {
-      path: './fonts/cardinal.ttf',
+      path: '@/app/fonts/cardinal.ttf',
       weight: "400",
       style: "normal",
     },
