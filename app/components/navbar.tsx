@@ -6,7 +6,7 @@ export default async function Navbar() {
   const session = await auth(); 
   return (
     <header className="header">
-        <nav className='flex justify-between items-center'>
+        <nav className='flex justify-between items-center text-xl'>
             <Link href="/" className='flex justify-between'>
                 <Image src="/logo-round.png" alt='logo' width={40} height={40} />
                 <div className='font-cardinal text-3xl'>

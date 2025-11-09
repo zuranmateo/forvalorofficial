@@ -35,10 +35,16 @@ body {
 
 @layer utilities{
   .main{
-    @apply flex items-center justify-center md:h-screen;
+    @apply flex items-center justify-center md:h-screen flex-col;
   }
   .header{
     @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
+  }
+  .heading{
+    @apply text-9xl text-textprimary font-cardinal;
+  }
+  .subheading{
+    @apply m-5 text-5xl text-textprimary font-cardinal;
   }
   .login-container{
     @apply bg-primary shadow-sm relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32;
@@ -46,5 +52,9 @@ body {
   .github-login-button{
     @apply bg-secondary w-full p-4 text-center;
   }
+  .homepage-button{
+    @apply border-textprimary text-textprimary border-4 px-10 py-2 mx-2 text-2xl rounded-4xl;
+  }
+
 }
 
