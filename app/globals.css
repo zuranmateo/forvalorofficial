@@ -5,6 +5,7 @@
   --foreground: #392f2f;
   --primary: #2a2321;
   --textprimary: #d4af37;
+  --textsecondary: #947201;
   --secondary: #221c1b;
   --black: #1a1a1a;
 }
@@ -14,6 +15,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-textprimary: var(--textprimary);
+  --color-textsecondary: var(--textsecondary);
   --color-secondary: var(--secondary);
   --color-black: var(--black);
   --font-cardinal: var(--cardinal);
@@ -50,11 +52,16 @@ body {
     @apply bg-primary shadow-sm relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32;
   }
   .github-login-button{
-    @apply bg-secondary w-full p-4 text-center;
+    @apply bg-secondary w-full p-4 text-center text-textprimary text-xl border border-textsecondary rounded;
   }
   .homepage-button{
     @apply border-textprimary text-textprimary border-4 px-10 py-2 mx-2 text-2xl rounded-4xl;
   }
-
+  .login-text-area{
+    @apply block w-full rounded-md border border-textprimary  py-[9px] pl-10 text-sm  placeholder:text-gray-500;
+  }
+  .submit-button{
+    @apply bg-secondary w-full p-2 text-center text-textprimary text-xl border border-textsecondary rounded my-3;
+  }
 }
 
