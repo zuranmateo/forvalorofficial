@@ -9,22 +9,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@sanity/client": "^7.12.1",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.14.2",
+=======
+>>>>>>> parent of d0a4063 (loginform)
     "@tailwindcss/typography": "^0.5.19",
     "auth": "^1.2.3",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "next": "16.0.1",
     "next-auth": "^5.0.0-beta.30",
-    "next-sanity": "^11.6.5",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "sanity": "^4.14.2",
-    "styled-components": "^6.1.19",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.1.12"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
