@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import AuthProvider from "@/components/session-provider";
 
 const cardinal = localFont({
   src:[
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${cardinal.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

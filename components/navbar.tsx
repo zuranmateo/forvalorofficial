@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { auth, signOut } from '@/auth'
+import { auth, signOut } from '@/sanity/lib/auth'
 
 export default async function Navbar() {
   const session = await auth(); 

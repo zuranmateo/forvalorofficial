@@ -49,7 +49,7 @@ body {
     @apply m-5 text-5xl text-textprimary font-cardinal;
   }
   .login-container{
-    @apply bg-primary shadow-sm relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32;
+    @apply bg-primary shadow-sm relative mx-auto my-10 flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32;
   }
   .github-login-button{
     @apply bg-secondary w-full p-4 text-center text-textprimary text-xl border border-textsecondary rounded;
