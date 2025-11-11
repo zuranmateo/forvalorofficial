@@ -1,6 +1,0 @@
-- [x] Update credentials form to use action={action} from useActionState
-- [x] Fix GitHub login to use a form with action={signInWithGithub}
-- [x] Remove unused PasswordFields import
-- [x] Add error display using state.errors
-- [x] Ensure proper form submission and handling
-- [x] Fix TypeScript error in useActionState
