@@ -16,8 +16,8 @@ export default async function Navbar() {
             <div className="flex items-center gap-5">
           {session && session?.user ? (
             <>
-              <Link href="/startup/create">
-                <span className="max-sm:hidden">Create</span>
+              <Link href="/getgame">
+                <span className="max-sm:hidden block bg-secondary py-2 px-4 rounded-xl">GET GAME</span>
               </Link>
 
               <form action={async() => {

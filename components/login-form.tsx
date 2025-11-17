@@ -12,8 +12,7 @@ const LoginForm = async () => {
         redirect("./")
       ):(
         <div>
-          <div>
-            <form action="">
+          <form action="">
               <div className='my-3'>
                 <div className='text-textprimary m-1'>gmail</div>
                 <input
@@ -39,18 +38,14 @@ const LoginForm = async () => {
               </div>
               <button type="submit" className='submit-button'>Login</button>
             </form>
-          </div>
-          <div className='my-5 text-center text-textprimary'>
-            ALI
-          </div>
-          <form action={ async() => {
-            "use server"
-            await signIn("github")}
-          }>
-          <button type='submit' className='github-login-button'>
-            Login with Github
-          </button>
-        </form>
+        <form action={ async() => {
+          "use server"
+          await signIn("github")}
+        }>
+        <button type='submit' className='github-login-button'>
+          Login with Github
+        </button>
+      </form>
       </div>
       )
     }

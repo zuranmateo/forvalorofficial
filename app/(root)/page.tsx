@@ -15,9 +15,9 @@ export default function Home() {
             UPDATES
           </button>
         </Link>
-        <Link href={"/buygame"}>
+        <Link href={"/getgame"}>
           <button className="homepage-button">
-            BUY GAME
+            GET GAME
           </button>
         </Link>
       </div>

@@ -39,8 +39,14 @@ body {
   .main{
     @apply flex items-center justify-center md:h-screen flex-col;
   }
+  .main-two{
+    @apply flex items-center md:h-screen flex-col py-10;
+  }
   .header{
     @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
+  }
+  .footer{
+    @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center;
   }
   .heading{
     @apply text-9xl text-textprimary font-cardinal;
@@ -62,6 +68,9 @@ body {
   }
   .submit-button{
     @apply bg-secondary w-full p-2 text-center text-textprimary text-xl border border-textsecondary rounded my-3;
+  }
+  .buy-container{
+    @apply bg-primary shadow-sm relative mx-auto flex w-full max-w-[800px] flex-col space-y-2.5 p-10 rounded-2xl;
   }
 }
 
