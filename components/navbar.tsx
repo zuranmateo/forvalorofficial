@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { auth, signOut } from '@/auth'
 
 export default async function Navbar() {
-  const session = await auth(); 
+  const session = await auth();
   return (
     <header className="header">
         <nav className='flex justify-between items-center text-xl'>
@@ -29,8 +29,9 @@ export default async function Navbar() {
                 </button>
               </form>
 
-              <Link href={`/user/${session?.user?.id}`}>
+              <Link href={`/user/${session?.user?.id}`} className='flex justify-between items-center'>
                 <span>{session?.user?.name}</span>
+                <Image src={session?.user?.image} alt='profile picture' height={50} width={50} className='rounded-4xl mx-3' />
               </Link>
             </>
           ):(
