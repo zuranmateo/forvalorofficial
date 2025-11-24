@@ -5,6 +5,7 @@ import { AUTHOR_BY_GITHUB_ID_QUERY } from "./sanity/lib/queries";
 import { writeClient } from "./sanity/lib/write-client";
 import Image from 'next/image';
 import { use } from 'react';
+import { debug } from 'console';
 
 
 
@@ -37,15 +38,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: profile?.id,
         });
 
-        token.id = user?._id;
+        token.id = user?.id;
         token.imageUrl = user?.imageUrl;
       }
-
       return token;
     },
 
     async session({ session, token }){
-      Object.assign(session, {id: token.id, imageUrl: token.imageUrl,});
+      Object.assign(session.user, {id: token.id, imageUrl: token.imageUrl,});
       return session;
     },
   }
