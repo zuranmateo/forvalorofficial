@@ -224,11 +224,61 @@ export type AUTHOR_BY_GITHUB_ID_QUERYResult = {
   } | null;
   imageUrl: string | null;
 } | null;
+// Variable: CHECK_FOR_EXISTING_AUTHOR
+// Query: *[_type == "author" && email == $email][0]
+export type CHECK_FOR_EXISTING_AUTHORResult = {
+  _id: string;
+  _type: "author";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  id?: number;
+  name?: string;
+  email?: string;
+  password?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  imageUrl?: string;
+} | null;
+// Variable: AUTHOR_BY_ID_QUERY
+// Query: *[_type == "author" && _id == $id][0]{    _id,    id,    name,    email,    password,    image,    imageUrl,   }
+export type AUTHOR_BY_ID_QUERYResult = {
+  _id: string;
+  id: number | null;
+  name: string | null;
+  email: string | null;
+  password: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  imageUrl: string | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n   *[_type == \"author\" && id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    image,\n    imageUrl,\n   } \n": AUTHOR_BY_GITHUB_ID_QUERYResult;
+    "\n   *[_type == \"author\" && email == $email][0]\n": CHECK_FOR_EXISTING_AUTHORResult;
+    "\n   *[_type == \"author\" && _id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    image,\n    imageUrl,\n   } \n": AUTHOR_BY_ID_QUERYResult;
   }
 }

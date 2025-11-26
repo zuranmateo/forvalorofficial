@@ -1,0 +1,97 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function RegisterPage() {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState(""); // dodano stanje
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // za prikaz napake
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Preveri, če sta gesli enaki
+    if (password !== repeatPassword) {
+      setError("Gesli nista enaki!");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    const data = await res.json();
+    setLoading(false);
+
+    if (res.ok) {
+      alert("Registration successful! You can now log in.");
+      router.push("./login");
+    } else {
+      setError(data.error || "Something went wrong");
+    }
+  };
+
+  return (
+    <main className="main">
+      <form onSubmit={handleSubmit} className="login-container">
+      <h2 className="mb-4 text-center text-2xl text-textprimary">Register</h2>
+
+      {error && <p className="text-red-500 mb-2">{error}</p>}
+
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="login-text-area"
+        required
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="login-text-area"
+        required
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="login-text-area"
+        required
+      />
+
+      <input
+        type="password"
+        placeholder="Repeat Password"
+        value={repeatPassword} // dodano pravilno stanje
+        onChange={(e) => setRepeatPassword(e.target.value)} // popravljeno
+        className="login-text-area"
+        required
+      />
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full p-2 my-5 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        {loading ? "Registering..." : "Register"}
+      </button>
+    </form>
+    </main>
+  );
+}

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { hostname } from "os";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -9,7 +10,11 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com"
+        hostname: "*"
+      },
+      {
+        protocol: "http",
+        hostname: "*"
       }
     ]
   }
