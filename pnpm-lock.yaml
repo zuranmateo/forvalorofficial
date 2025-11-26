@@ -20,6 +20,12 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.17)
+      bcryptjs:
+        specifier: ^3.0.3
+        version: 3.0.3
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
       lucide-react:
         specifier: ^0.554.0
         version: 0.554.0(react@19.2.0)
@@ -2665,6 +2671,10 @@ packages:
 
   baseline-browser-mapping@2.8.28:
     resolution: {integrity: sha512-gYjt7OIqdM0PcttNYP2aVrr2G0bMALkBaoehD4BuRGjAOtipg0b6wHg1yNL+s5zSnLZZrGHOw4IrND8CD+3oIQ==}
+    hasBin: true
+
+  bcryptjs@3.0.3:
+    resolution: {integrity: sha512-GlF5wPWnSa/X5LKM1o0wz0suXIINz1iHRLvTS+sLyi7XPbe5ycmYI3DlZqVGZZtDgl4DmasFg7gOB3JYbphV5g==}
     hasBin: true
 
   before-after-hook@2.2.3:
@@ -9007,6 +9017,8 @@ snapshots:
   base64-js@1.5.1: {}
 
   baseline-browser-mapping@2.8.28: {}
+
+  bcryptjs@3.0.3: {}
 
   before-after-hook@2.2.3: {}
 

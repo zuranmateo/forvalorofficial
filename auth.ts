@@ -31,7 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   AUTHOR_BY_ID_QUERY, { email });
 
   if (!user) return null;
-
+  if (!user.password) return null;
   //console.log(user);
   //console.log(user.image,)
 
@@ -54,14 +54,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const existingUser = await client.fetch(AUTHOR_BY_GITHUB_ID_QUERY, { 
           id: profile?.id,
        });
-
       if(!existingUser){
         await writeClient.create({
           _type: 'author',
           id: profile?.id,
           name: user?.name,
           email: user?.email,
-          imageUrl: user?.imageUrl,
+          imageUrl: user?.image,
         })
       }
       }
@@ -75,7 +74,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         });
 
         token.id = user?.id;
-        token.imageUrl = user?.imageUrl || null;
+        token.imageUrl = user?.imageUrl;
       }
       return token;
     },

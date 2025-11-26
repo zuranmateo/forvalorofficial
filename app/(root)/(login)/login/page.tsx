@@ -60,7 +60,7 @@ export default function LoginPage() {
 
         {/* GitHub login */}
         <button
-          onClick={() => signIn("github",{ redirectTo: "./" })}
+          onClick={() => signIn("github")}
           className="w-full mt-4 p-2 bg-black text-white rounded"
         >
       Login with GitHub

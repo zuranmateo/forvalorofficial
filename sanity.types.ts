@@ -203,25 +203,13 @@ export type AllSanitySchemaTypes = Comment | Slug | Update | SanityImageCrop | S
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: AUTHOR_BY_GITHUB_ID_QUERY
-// Query: *[_type == "author" && id == $id][0]{    _id,    id,    name,    email,    password,    image,    imageUrl,   }
+// Query: *[_type == "author" && id == $id][0]{    _id,    id,    name,    email,    password,    imageUrl,   }
 export type AUTHOR_BY_GITHUB_ID_QUERYResult = {
   _id: string;
   id: number | null;
   name: string | null;
   email: string | null;
   password: string | null;
-  image: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  } | null;
   imageUrl: string | null;
 } | null;
 // Variable: CHECK_FOR_EXISTING_AUTHOR
@@ -251,25 +239,14 @@ export type CHECK_FOR_EXISTING_AUTHORResult = {
   imageUrl?: string;
 } | null;
 // Variable: AUTHOR_BY_ID_QUERY
-// Query: *[_type == "author" && _id == $id][0]{    _id,    id,    name,    email,    password,    image,    imageUrl,   }
+// Query: *[_type == "author" && email == $email][0]{  _id,  id,  name,  email,  password,  "image": image.asset->url,  imageUrl}
 export type AUTHOR_BY_ID_QUERYResult = {
   _id: string;
   id: number | null;
   name: string | null;
   email: string | null;
   password: string | null;
-  image: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  } | null;
+  image: string | null;
   imageUrl: string | null;
 } | null;
 
@@ -277,8 +254,8 @@ export type AUTHOR_BY_ID_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n   *[_type == \"author\" && id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    image,\n    imageUrl,\n   } \n": AUTHOR_BY_GITHUB_ID_QUERYResult;
+    "\n   *[_type == \"author\" && id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    imageUrl,\n   } \n": AUTHOR_BY_GITHUB_ID_QUERYResult;
     "\n   *[_type == \"author\" && email == $email][0]\n": CHECK_FOR_EXISTING_AUTHORResult;
-    "\n   *[_type == \"author\" && _id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    image,\n    imageUrl,\n   } \n": AUTHOR_BY_ID_QUERYResult;
+    "\n   *[_type == \"author\" && email == $email][0]{\n  _id,\n  id,\n  name,\n  email,\n  password,\n  \"image\": image.asset->url,\n  imageUrl\n}\n": AUTHOR_BY_ID_QUERYResult;
   }
 }
