@@ -1,12 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { UserIcon } from "lucide-react";
-
+import { BellIcon } from "lucide-react";
 
 export const update = defineType({
     name: "update",
     title: "Update",
     type: "document",
-    icon: UserIcon,
+    icon: BellIcon,
     fields: [
         defineField({
             name: "title",
@@ -20,11 +19,19 @@ export const update = defineType({
             }
         }),
         defineField({
+            name: "version",
+            type:"string",
+        }),
+        defineField({
             name: "views",
             type:"number",
         }),
         defineField({
-            name: "description",
+            name: "desc",
+            type:"markdown",
+        }),
+        defineField({
+            name: "smallDesc",
             type:"text",
         }),
         defineField({
@@ -34,7 +41,7 @@ export const update = defineType({
     ],
     preview: {
         select: {
-            title: "name",
+            title: "title",
         },
     },
 })

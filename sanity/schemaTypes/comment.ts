@@ -39,7 +39,7 @@ export const comment = defineType({
     ],
     preview: {
         select: {
-            title: "name",
+            title: "title",
         },
     },
 })
