@@ -182,6 +182,13 @@
         },
         "optional": true
       },
+      "version": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "views": {
         "type": "objectAttribute",
         "value": {
@@ -189,7 +196,15 @@
         },
         "optional": true
       },
-      "description": {
+      "desc": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "markdown"
+        },
+        "optional": true
+      },
+      "smallDesc": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -353,6 +368,13 @@
           "optional": true
         }
       }
+    }
+  },
+  {
+    "name": "markdown",
+    "type": "type",
+    "value": {
+      "type": "string"
     }
   },
   {

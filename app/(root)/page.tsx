@@ -2,7 +2,7 @@ import Link from "next/link";
 export default function Home() {
   return (
   <>
-    <main className="main">
+    <main className="main-two">
       <div className="heading">
         FOR VALOR
       </div>

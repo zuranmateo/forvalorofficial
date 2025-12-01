@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -42,7 +43,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="main">
+    <main className="main-two">
       <form onSubmit={handleSubmit} className="login-container">
       <h2 className="mb-4 text-center text-2xl text-textprimary">Register</h2>
 
@@ -91,6 +92,12 @@ export default function RegisterPage() {
       >
         {loading ? "Registering..." : "Register"}
       </button>
+      <p className="text-center text-sm mt-3">
+  already have an account?{" "}
+  <Link href="./login" className="text-blue-600 underline">
+    Login
+  </Link>
+</p>
     </form>
     </main>
   );

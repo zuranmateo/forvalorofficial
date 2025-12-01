@@ -1,5 +1,14 @@
+import { Update } from '@/sanity.types';
 import { FormatDate } from '@/sanity/lib/utils'
 
+
+export type UpdateCardType = Omit<Update, "title" | "smallDesc" | "desc" | "version" | "image"> & {
+  title: string | null;
+  smallDesc: string | null;
+  desc: string | null;
+  version: string | null;
+  image: string | null;
+};
 
 const UpdateCard = ({post}:{post: UpdateCardType}) => {
   return (
@@ -16,7 +25,7 @@ const UpdateCard = ({post}:{post: UpdateCardType}) => {
                 </div>
                 <div>
                     <p className="text-textgray text-md bg-primary/90 p-3 rounded-2xl">
-                        {FormatDate(post?._updatedAt)},
+                        {FormatDate(post?._updatedAt)}
                     </p>
                 </div>
             </div>

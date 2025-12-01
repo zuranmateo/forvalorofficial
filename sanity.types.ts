@@ -46,8 +46,10 @@ export type Update = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  version?: string;
   views?: number;
-  description?: string;
+  desc?: Markdown;
+  smallDesc?: string;
   image?: {
     asset?: {
       _ref: string;
@@ -77,6 +79,8 @@ export type SanityImageHotspot = {
   height?: number;
   width?: number;
 };
+
+export type Markdown = string;
 
 export type Author = {
   _id: string;
@@ -199,7 +203,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Comment | Slug | Update | SanityImageCrop | SanityImageHotspot | Author | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Comment | Slug | Update | SanityImageCrop | SanityImageHotspot | Markdown | Author | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: AUTHOR_BY_GITHUB_ID_QUERY
@@ -249,6 +253,22 @@ export type AUTHOR_BY_ID_QUERYResult = {
   image: string | null;
   imageUrl: string | null;
 } | null;
+// Variable: UPDATES_QUERY
+// Query: *[_type == "update" && defined(slug.current)] | order(_createdAt desc){  _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  smallDesc,  desc,  version,  views,  "image": image.asset->url,}
+export type UPDATES_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  _updatedAt: string;
+  _createdAt: string;
+  _rev: string;
+  _type: "update";
+  slug: Slug | null;
+  smallDesc: string | null;
+  desc: Markdown | null;
+  version: string | null;
+  views: number | null;
+  image: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -257,5 +277,6 @@ declare module "@sanity/client" {
     "\n   *[_type == \"author\" && id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    imageUrl,\n   } \n": AUTHOR_BY_GITHUB_ID_QUERYResult;
     "\n   *[_type == \"author\" && email == $email][0]\n": CHECK_FOR_EXISTING_AUTHORResult;
     "\n   *[_type == \"author\" && email == $email][0]{\n  _id,\n  id,\n  name,\n  email,\n  password,\n  \"image\": image.asset->url,\n  imageUrl\n}\n": AUTHOR_BY_ID_QUERYResult;
+    "\n   *[_type == \"update\" && defined(slug.current)] | order(_createdAt desc){\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_QUERYResult;
   }
 }

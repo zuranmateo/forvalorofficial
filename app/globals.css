@@ -39,10 +39,10 @@ body {
 
 @layer utilities{
   .main{
-    @apply flex items-center justify-center md:h-screen flex-col;
+    @apply flex items-center justify-center flex-col my-5;
   }
   .main-two{
-    @apply flex items-center md:h-screen flex-col py-10;
+    @apply flex items-center h-[calc(100vh-150px)] flex-col justify-center;
   }
   .header{
     @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
@@ -78,7 +78,7 @@ body {
     @apply grid grid-cols-1;
   }
   .update-card{
-    @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black min-w-[1000px];
+    @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black min-w-[1000px] my-4;
   }
   .update-card-upper-part{
     @apply flex flex-row justify-between rounded-2xl px-5 py-7 min-h-[300px];

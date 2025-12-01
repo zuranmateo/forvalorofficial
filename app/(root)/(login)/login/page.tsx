@@ -27,7 +27,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="main">
+    <div className="main-two">
       <div className="bg-primary p-8 rounded-lg shadow w-full max-w-md">
 
         <h2 className="text-2xl font-semibold text-center mb-6">Log In</h2>

@@ -26,3 +26,20 @@ export const AUTHOR_BY_ID_QUERY = defineQuery(`
   imageUrl
 }
 `);
+
+export const UPDATES_QUERY = defineQuery(`
+   *[_type == "update" && defined(slug.current)] | order(_createdAt desc){
+  _id,
+  title,
+  _updatedAt,
+  _createdAt,
+  _rev,
+  _type,
+  slug,
+  smallDesc,
+  desc,
+  version,
+  views,
+  "image": image.asset->url,
+}
+`)
