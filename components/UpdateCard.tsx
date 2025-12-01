@@ -2,7 +2,8 @@ import { Update } from '@/sanity.types';
 import { FormatDate } from '@/sanity/lib/utils'
 
 
-export type UpdateCardType = Omit<Update, "image"> & {
+export type UpdateCardType = Omit<Update, "image" | "title"> & {
+    title?: string | null;
     image?: string | null;
 };
 
