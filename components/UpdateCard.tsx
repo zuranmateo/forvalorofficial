@@ -1,8 +1,9 @@
-import { Update } from '@/sanity.types';
+import { Slug, Update } from '@/sanity.types';
 import { FormatDate } from '@/sanity/lib/utils'
 
 
-export type UpdateCardType = Omit<Update, "image" | "title"> & {
+export type UpdateCardType = Omit<Update, "image" | "title" | "slug"> & {
+    slug?: Slug | null;
     title?: string | null;
     image?: string | null;
 };
