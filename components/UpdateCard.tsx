@@ -2,12 +2,12 @@ import { Markdown, Slug, Update } from '@/sanity.types';
 import { FormatDate } from '@/sanity/lib/utils'
 
 
-export type UpdateCardType = Omit<Update, "image" | "title" | "slug" | "version" | "view" | "smallDesc" | "desc"> & {
+export type UpdateCardType = Omit<Update, "image" | "title" | "slug" | "version" | "views" | "smallDesc" | "desc"> & {
     image?: string | null;
     title?: string | null;
     slug?: Slug | null;
     version?: string | null;
-    view?: number | null;
+    views?: number | null;
     smallDesc?: string | null;
     desc?: Markdown | null;
 };
