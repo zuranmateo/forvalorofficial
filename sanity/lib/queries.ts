@@ -30,7 +30,7 @@ export const AUTHOR_BY_ID_QUERY = defineQuery(`
 export const UPDATES_QUERY = defineQuery(`
    *[_type == "update" && defined(slug.current)] | order(_createdAt desc){
   _id,
-  title | undefined,
+  title,
   _updatedAt,
   _createdAt,
   _rev,

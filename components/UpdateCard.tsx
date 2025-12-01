@@ -2,7 +2,9 @@ import { Update } from '@/sanity.types';
 import { FormatDate } from '@/sanity/lib/utils'
 
 
-export type UpdateCardType = Update;
+export type UpdateCardType = Omit<Update, "image"> & {
+    image?: string | null;
+};
 
 
 const UpdateCard = ({post}:{post: UpdateCardType}) => {

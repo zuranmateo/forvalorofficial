@@ -254,7 +254,7 @@ export type AUTHOR_BY_ID_QUERYResult = {
   imageUrl: string | null;
 } | null;
 // Variable: UPDATES_QUERY
-// Query: *[_type == "update" && defined(slug.current)] | order(_createdAt desc){  _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  smallDesc,  desc,  version,  views,  "image": image.asset->url,}
+// Query: *[_type == "update" && defined(slug.current)] | order(_createdAt desc){  _id,  title | undefined,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  smallDesc,  desc,  version,  views,  "image": image.asset->url,}
 export type UPDATES_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -277,6 +277,6 @@ declare module "@sanity/client" {
     "\n   *[_type == \"author\" && id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    imageUrl,\n   } \n": AUTHOR_BY_GITHUB_ID_QUERYResult;
     "\n   *[_type == \"author\" && email == $email][0]\n": CHECK_FOR_EXISTING_AUTHORResult;
     "\n   *[_type == \"author\" && email == $email][0]{\n  _id,\n  id,\n  name,\n  email,\n  password,\n  \"image\": image.asset->url,\n  imageUrl\n}\n": AUTHOR_BY_ID_QUERYResult;
-    "\n   *[_type == \"update\" && defined(slug.current)] | order(_createdAt desc){\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_QUERYResult;
+    "\n   *[_type == \"update\" && defined(slug.current)] | order(_createdAt desc){\n  _id,\n  title | undefined,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_QUERYResult;
   }
 }
