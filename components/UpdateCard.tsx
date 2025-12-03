@@ -1,5 +1,6 @@
 import { Markdown, Slug, Update } from '@/sanity.types';
 import { FormatDate } from '@/sanity/lib/utils'
+import Link from 'next/link';
 
 
 export type UpdateCardType = Omit<Update, "image" | "title" | "slug" | "version" | "views" | "smallDesc" | "desc"> & {
@@ -16,7 +17,8 @@ export type UpdateCardType = Omit<Update, "image" | "title" | "slug" | "version"
 const UpdateCard = ({post}:{post: UpdateCardType}) => {
   return (
     <li className='update-card'>
-        <div className='flex-between text-textprimary px-5 py-7 min-h-[350px] rounded-2xl'  style={{backgroundImage: `url('${post?.image}')`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <Link href={`updates/update/${post?.slug?.current}`}>
+            <div className='flex-between text-textprimary px-5 py-7 min-h-[350px] rounded-2xl'  style={{backgroundImage: `url('${post?.image}')`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
             <div className="flex flex-row justify-between rounded-2xl">
                 <div className='bg-primary/85 p-4 rounded-2xl max-w-[500px] h-fit'>
                     <h1 className="text-4xl">
@@ -43,6 +45,7 @@ const UpdateCard = ({post}:{post: UpdateCardType}) => {
                 </p>
             </div>
         </div>
+        </Link>
     </li>
   )
 }
