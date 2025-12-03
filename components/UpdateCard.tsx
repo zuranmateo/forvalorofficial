@@ -25,7 +25,7 @@ const UpdateCard = ({post}:{post: UpdateCardType}) => {
                     {post?.title}
                     </h1>
                     <p className='text-textgray py-3 text-2xl'>
-                    Version: {post.version}
+                    Version: {post?.version}
                     </p>
                 </div>
                 <div>

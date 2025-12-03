@@ -33,7 +33,7 @@ export default async function Navbar() {
               </form>
               <Link href={`/user/${session?.user?.id}`} className='flex justify-between items-center'>
                 <span>{session?.user?.name}</span>
-                <Image src={`${session?.user?.image || session?.user?.imageUrl || "/defaultProfileImg.png"}`  }  alt='profile picture' height={50} width={50} className='rounded-4xl mx-3' />
+                <Image src={`${session?.user?.image || session?.user?.imageUrl || "/defaultProfileImg.png"}`  }  alt='profile picture' height={50} width={50} className='rounded-4xl mx-3 h-11 w-11 object-cover' />
               </Link>
             </>
           ):(
