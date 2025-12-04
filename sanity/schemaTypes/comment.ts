@@ -26,15 +26,7 @@ export const comment = defineType({
         }),
         defineField({
             name: "description",
-            type:"text",
-        }),
-        defineField({
-            name: "views",
-            type:"number",
-        }),
-        defineField({
-            name: "image",
-            type:"url",
+            type:"markdown",
         }),
     ],
     preview: {

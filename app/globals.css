@@ -77,11 +77,20 @@ body {
   .update-grid{
     @apply grid grid-cols-1;
   }
+  .comment-grid{
+    @apply columns-1 sm:columns-2 md:columns-3 lg:columns-3 gap-4 p-4;
+  }
   .update-card{
-    @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black min-w-[1000px] my-4;
+    @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black min-w-[1000px] break-all my-4;
+  }
+  .comment-card{
+    @apply bg-primary border-[3px] border-textprimary rounded-2xl transition-all duration-500 hover:shadow-black max-w-[500px] min-w-[100px] min-h-[50px] my-3 break-inside-avoid;
   }
   .update-card-upper-part{
     @apply flex flex-row justify-between rounded-2xl px-5 py-7 min-h-[300px];
+  }
+  .comment-btn{
+    @apply block text-textprimary py-2 px-5 rounded-xl bg-primary mx-5 w-fit;
   }
 }
 

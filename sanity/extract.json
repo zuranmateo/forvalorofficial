@@ -82,24 +82,18 @@
       "description": {
         "type": "objectAttribute",
         "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "views": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "number"
-        },
-        "optional": true
-      },
-      "image": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
+          "type": "inline",
+          "name": "markdown"
         },
         "optional": true
       }
+    }
+  },
+  {
+    "name": "markdown",
+    "type": "type",
+    "value": {
+      "type": "string"
     }
   },
   {
@@ -368,13 +362,6 @@
           "optional": true
         }
       }
-    }
-  },
-  {
-    "name": "markdown",
-    "type": "type",
-    "value": {
-      "type": "string"
     }
   },
   {

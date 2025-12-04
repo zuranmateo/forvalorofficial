@@ -23,6 +23,10 @@ export default async function Navbar() {
                 <span className="max-sm:hidden block bg-secondary py-2 px-4 rounded-xl">GET GAME</span>
               </Link>
 
+              <Link href="/comments">
+                <span className="max-sm:hidden block bg-secondary py-2 px-4 rounded-xl">COMMENTS</span>
+              </Link>
+
               <form action={async() => {
                 "use server"
                 await signOut({ redirectTo: "/" });
@@ -33,7 +37,7 @@ export default async function Navbar() {
               </form>
               <Link href={`/user/${session?.user?.id}`} className='flex justify-between items-center'>
                 <span>{session?.user?.name}</span>
-                <Image src={`${session?.user?.image || session?.user?.imageUrl || "/defaultProfileImg.png"}`  }  alt='profile picture' height={50} width={50} className='rounded-4xl mx-3 h-11 w-11 object-cover' />
+                <Image src={`${session?.user?.image || session?.user?.imageUrl || "/defaultProfileImg.png"}`  }  alt='profile picture' height={50} width={50} className='rounded-full mx-3 h-9 w-9 object-cover' />
               </Link>
             </>
           ):(

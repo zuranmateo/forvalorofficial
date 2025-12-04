@@ -67,3 +67,19 @@ export const UPDATE_VIEWS_QUERY = defineQuery(`
       _id, slug, views
    }
 `)
+
+export const COMMENT_QUERY = defineQuery(`
+   *[_type == "comment" && defined(slug.current)] | order(_createdAt desc) {
+   _id,
+  title,
+  _updatedAt,
+  _createdAt,
+  _rev,
+  _type,
+  slug,
+  author -> {
+   _id, name, email, "image": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type
+  },
+  description,
+   }
+`)

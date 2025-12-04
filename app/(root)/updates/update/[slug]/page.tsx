@@ -3,7 +3,6 @@ import { client } from "@/sanity/lib/client";
 import { UPDATES_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { FormatDate } from "@/sanity/lib/utils";
 import  markdownit  from "markdown-it";
-import { Slug } from '../../../../../sanity.types';
 
 const md = markdownit();
 
