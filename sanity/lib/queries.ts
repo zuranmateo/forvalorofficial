@@ -61,3 +61,9 @@ export const UPDATES_BY_SLUG_QUERY = defineQuery(`
   "image": image.asset->url,
 }
 `)
+
+export const UPDATE_VIEWS_QUERY = defineQuery(`
+   *[_type == "update" && defined(slug.current) && slug.current == $slug][0]{
+      _id, slug, views
+   }
+`)

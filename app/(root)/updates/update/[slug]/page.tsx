@@ -1,7 +1,9 @@
+import View from "@/components/view";
 import { client } from "@/sanity/lib/client";
 import { UPDATES_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { FormatDate } from "@/sanity/lib/utils";
 import  markdownit  from "markdown-it";
+import { Slug } from '../../../../../sanity.types';
 
 const md = markdownit();
 
@@ -37,7 +39,7 @@ export default async function page (props: { params: Promise<{ slug: string }> }
         <h3 className="p-4 text-textprimary text-2xl mt-10">
           INFO
         </h3>
-        <div className="py-5 px-3 text-textprimary text-xl bg-background mx-6">
+        <div className="py-5 px-3 text-textprimary text-xl bg-background mx-6 break-all">
           {parsedContent ? (
             <article
               dangerouslySetInnerHTML={{__html : parsedContent}}
@@ -47,9 +49,7 @@ export default async function page (props: { params: Promise<{ slug: string }> }
           )}
         </div>
         <div className='mt-2'>
-          <p className="text-textgray text-md bg-primary p-3 rounded-2xl w-fit">
-            views: {post?.views}
-          </p>
+          <View slug={slug}/>
         </div>
       </div>
       </section>
