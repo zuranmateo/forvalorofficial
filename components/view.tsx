@@ -16,7 +16,7 @@ export default async function View({slug}: {slug: string}){
         </div>
         <p className=''>
             <span>
-                views: {post.views}
+                views: {post?.views}
             </span>
         </p>
     </div>
