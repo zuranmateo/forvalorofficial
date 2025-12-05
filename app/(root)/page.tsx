@@ -3,9 +3,9 @@ export default function Home() {
   return (
   <>
     <main className="main-two">
-      <div className="heading">
+      <h1 className="heading">
         FOR VALOR
-      </div>
+      </h1>
       <div className="subheading">
         Fight for fame, fight for glory, fight for valor
       </div>

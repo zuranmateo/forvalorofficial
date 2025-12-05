@@ -1,14 +1,44 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
-  --background: #2a2321;
-  --foreground: #392f2f;
+  --background: #3f3535;
+  --foreground: #ededed;
   --primary: #2a2321;
   --textprimary: #d4af37;
   --textsecondary: #947201;
   --textgray: #5f5f5f;
   --secondary: #221c1b;
   --black: #1a1a1a;
+  --radius: 0.625rem;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme inline {
@@ -22,19 +52,37 @@
   --color-black: var(--black);
   --font-cardinal: var(--cardinal);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #3f3535;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer utilities{
@@ -42,7 +90,7 @@ body {
     @apply flex items-center justify-center flex-col my-5;
   }
   .main-two{
-    @apply flex items-center md:h-[calc(100vh-150px)] sm:h-[calc(100vh-100px)] flex-col justify-center;
+    @apply flex items-center h-[calc(100vh-150px)] flex-col justify-center;
   }
   .header{
     @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
@@ -63,13 +111,13 @@ body {
     @apply bg-secondary w-full p-4 text-center text-textprimary text-xl border border-textsecondary rounded;
   }
   .homepage-button{
-    @apply border-textprimary text-textprimary border-4 md:px-10 sm:px-8 py-2 mx-2 lg:text-2xl md:text-2xl sm:text-xl rounded-4xl;
+    @apply border-textprimary text-textprimary border-4 md:px-10 sm:px-10 py-2 mx-2 lg:text-2xl md:text-2xl sm:text-xl rounded-4xl hover:bg-textprimary hover:text-primary;
   }
   .login-text-area{
     @apply w-full p-2 border rounded border-textprimary my-3;
   }
   .submit-button{
-    @apply bg-secondary w-full p-2 text-center text-textprimary text-xl border border-textsecondary rounded my-3;
+    @apply bg-secondary w-full p-2 text-center text-textprimary text-xl border border-textsecondary rounded my-3 hover:bg-textprimary hover:text-primary;
   }
   .buy-container{
     @apply bg-primary shadow-sm relative mx-auto flex w-full max-w-[800px] flex-col space-y-2.5 p-10 rounded-2xl;
@@ -90,7 +138,38 @@ body {
     @apply flex flex-row justify-between rounded-2xl px-5 py-7 min-h-[300px];
   }
   .comment-btn{
-    @apply block text-textprimary py-2 px-5 rounded-xl bg-primary mx-5 w-fit;
+    @apply block text-textprimary py-2 px-5 rounded-xl bg-primary mx-5 w-fit hover:bg-textprimary hover:text-primary;
+  }
+  .Comment-form-input{
+    @apply rounded-xl text-textprimary px-3;
+  }
+  .comment-form-label{
+    @apply text-textprimary pl-2 text-xl;
+  }
+  .comment-form-error{
+    @apply text-red-500 text-sm;
+  }
+  .comment-form-textarea{
+    @apply text-textprimary rounded-xl box-border resize-none overflow-hidden border px-3 py-2;
+  }
+  .comment-form-part{
+    @apply mt-2;
+  }
+  .comment-form-mdeditor{
+    @apply bg-primary text-textprimary;
+  }
+  .comment-form-btn{
+    @apply px-5 py-3 my-6 border-textprimary bg-secondary w-fit flex flex-row rounded-xl border-3 text-textprimary text-xl hover:text-secondary hover:bg-textprimary;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
