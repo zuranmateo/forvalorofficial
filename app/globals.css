@@ -42,19 +42,19 @@ body {
     @apply flex items-center justify-center flex-col my-5;
   }
   .main-two{
-    @apply flex items-center h-[calc(100vh-150px)] flex-col justify-center;
+    @apply flex items-center md:h-[calc(100vh-150px)] sm:h-[calc(100vh-100px)] flex-col justify-center;
   }
   .header{
     @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
   }
   .footer{
-    @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center;
+    @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center sm:flex-col;
   }
   .heading{
-    @apply text-9xl text-textprimary font-cardinal;
+    @apply md:text-9xl sm:text-4xl text-textprimary font-cardinal;
   }
   .subheading{
-    @apply m-5 text-5xl text-textprimary font-cardinal;
+    @apply m-5 md:text-5xl sm:text-2xl text-textprimary font-cardinal;
   }
   .login-container{
     @apply bg-primary p-8 rounded-lg shadow w-full max-w-md;
