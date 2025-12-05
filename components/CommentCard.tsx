@@ -8,11 +8,18 @@ import { redirect } from 'next/navigation';
 
 const md = markdownit();
 
+export type AuthorType = Omit<Author, "name" | "email" | "image" | "imageUrl"> & {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+    imageUrl?: string | null;
+}
+
 export type CommentCardType = Omit<Comment, "title" | "slug" | "description" | "author"> & {
     title?: string | null;
     slug?: Slug | null;
     description?: Markdown | null;
-    author?: Author | null;
+    author?: AuthorType | null;
 };
 
 

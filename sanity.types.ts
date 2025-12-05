@@ -293,7 +293,7 @@ export type UPDATE_VIEWS_QUERYResult = {
   views: number | null;
 } | null;
 // Variable: COMMENT_QUERY
-// Query: *[_type == "comment" && defined(slug.current) | order(_createdAt desc)]{   _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  author -> {   _id, name, email, "image": image.asset->url, imageUrl  },  description,   }
+// Query: *[_type == "comment" && defined(slug.current)] | order(_createdAt desc) {   _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  author -> {   _id, name, email, "image": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type  },  description,   }
 export type COMMENT_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -308,6 +308,10 @@ export type COMMENT_QUERYResult = Array<{
     email: string | null;
     image: string | null;
     imageUrl: string | null;
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    _type: "author";
   } | null;
   description: string | null;
 }>;
@@ -322,6 +326,6 @@ declare module "@sanity/client" {
     "\n   *[_type == \"update\" && defined(slug.current)] | order(_createdAt desc){\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_QUERYResult;
     "\n   *[_type == \"update\" && defined(slug.current) && slug.current == $slug][0]{\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_BY_SLUG_QUERYResult;
     "\n   *[_type == \"update\" && defined(slug.current) && slug.current == $slug][0]{\n      _id, slug, views\n   }\n": UPDATE_VIEWS_QUERYResult;
-    "\n   *[_type == \"comment\" && defined(slug.current) | order(_createdAt desc)]{\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl\n  },\n  description,\n   }\n": COMMENT_QUERYResult;
+    "\n   *[_type == \"comment\" && defined(slug.current)] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_QUERYResult;
   }
 }
