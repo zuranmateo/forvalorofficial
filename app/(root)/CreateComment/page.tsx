@@ -11,6 +11,8 @@ export default async function page(){
     redirect("/");
   }
 
+  console.log(session.user.id);
+
   return (
     <div className='main'>
       <h1 className='subheading'>CREATE COMMENT</h1>

@@ -1,5 +1,5 @@
 import { Markdown, Slug, Comment, Author } from '@/sanity.types';
-import { FormatDate } from '@/sanity/lib/utils'
+import { FormatDate } from '@/lib/utils'
 import Link from 'next/link';
 import Image from 'next/image';
 import  markdownit  from "markdown-it";

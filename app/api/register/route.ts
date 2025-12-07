@@ -51,8 +51,11 @@ export async function POST(req: NextRequest) {
     }
   }
 });
-
-
+/*
+await writeClient.patch(newUser._id)
+  .set({ id: newUser._id })
+  .commit();
+*/
 console.log("Incoming data:", { name, email, password });
 
     return NextResponse.json(

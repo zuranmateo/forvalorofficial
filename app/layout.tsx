@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Toaster, Toaster as Sonner } from 'sonner';
 
 const cardinal = localFont({
   src:[
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${cardinal.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
