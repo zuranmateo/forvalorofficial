@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { writeClient } from "@/sanity/lib/write-client";
-import { CHECK_FOR_EXISTING_AUTHOR } from "@/sanity/lib/queries";
+import { CHECK_FOR_EXISTING_AUTHOR, CHECK_FOR_ID_QUERY } from "@/sanity/lib/queries";
 import fs from "fs";
 import path from "path";
+import { client } from "@/sanity/lib/client";
 
 export async function POST(req: NextRequest) {
   try {
@@ -37,9 +38,20 @@ export async function POST(req: NextRequest) {
       buffer,
       {filename: "defaultProfileImg.png"}
     )
+    
+    let generatedId;
+    let existingId;
+    do {
+      //make ID from date, in miliseconds
+      generatedId = Date.now();
+
+      existingId = await client.fetch(CHECK_FOR_ID_QUERY, {generatedId})
+      console.log(existingId)
+    } while (existingId);
 
  const newUser = await writeClient.create({
   _type: "author",
+  id: generatedId, 
   name,
   email,
   password: hashedPassword,
@@ -51,11 +63,7 @@ export async function POST(req: NextRequest) {
     }
   }
 });
-/*
-await writeClient.patch(newUser._id)
-  .set({ id: newUser._id })
-  .commit();
-*/
+
 console.log("Incoming data:", { name, email, password });
 
     return NextResponse.json(

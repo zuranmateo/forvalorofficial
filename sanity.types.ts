@@ -315,6 +315,11 @@ export type COMMENT_QUERYResult = Array<{
   } | null;
   description: string | null;
 }>;
+// Variable: CHECK_FOR_ID_QUERY
+// Query: *[_type == "author" && id == $generatedId][0]{      id   }
+export type CHECK_FOR_ID_QUERYResult = {
+  id: number | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -327,5 +332,6 @@ declare module "@sanity/client" {
     "\n   *[_type == \"update\" && defined(slug.current) && slug.current == $slug][0]{\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_BY_SLUG_QUERYResult;
     "\n   *[_type == \"update\" && defined(slug.current) && slug.current == $slug][0]{\n      _id, slug, views\n   }\n": UPDATE_VIEWS_QUERYResult;
     "\n   *[_type == \"comment\" && defined(slug.current)] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_QUERYResult;
+    "\n   *[_type == \"author\" && id == $generatedId][0]{\n      id\n   }\n": CHECK_FOR_ID_QUERYResult;
   }
 }

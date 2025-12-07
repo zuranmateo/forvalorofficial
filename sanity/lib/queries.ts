@@ -83,3 +83,9 @@ export const COMMENT_QUERY = defineQuery(`
   description,
    }
 `)
+
+export const CHECK_FOR_ID_QUERY = defineQuery(`
+   *[_type == "author" && id == $generatedId][0]{
+      id
+   }
+`)

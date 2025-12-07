@@ -7,7 +7,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
 
-
+let id: number | null;
 
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -37,6 +37,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   const isCorrect = await bcrypt.compare(password, user.password);
   if (!isCorrect) return null;
+
+  id = user.id;
   return {
     id: user._id,
     name: user.name,
@@ -75,6 +77,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         token.id = user?.id;
         token.imageUrl = user?.imageUrl;
+      }
+      else if(id){
+        const user = await client.fetch(AUTHOR_BY_GITHUB_ID_QUERY, {
+          id: id,
+        });
+        token.id = user?.id;
       }
       return token;
     },
