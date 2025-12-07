@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function RegisterPage() {
     setLoading(false);
 
     if (res.ok) {
-      alert("Registration successful! You can now log in.");
+      toast.success("Registration successful! You can now log in.");
       router.push("./login");
     } else {
       setError(data.error || "Something went wrong");

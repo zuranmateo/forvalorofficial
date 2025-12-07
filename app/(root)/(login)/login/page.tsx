@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { redirect } from "next/dist/server/api-utils";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,8 +22,11 @@ export default function LoginPage() {
 
     setLoading(false);
 
-    if (!res?.error) window.location.href = "./";
-    else alert("Invalid email or password");
+    if (!res?.error){
+      toast.success("Successfull login")
+      window.location.href = "./";
+    }
+    else toast.error("Invalid email or password");
   };
 
   return (
