@@ -76,6 +76,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         });
 
         token.id = user?.id;
+        token._id = user?._id
         token.imageUrl = user?.imageUrl;
       }
       else if(id){
@@ -83,12 +84,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: id,
         });
         token.id = user?.id;
+        token._id = user?._id
       }
       return token;
     },
 
     async session({ session, token }){
-      Object.assign(session.user, {id: token.id, imageUrl: token.imageUrl,});
+      Object.assign(session.user, {id: token.id, imageUrl: token.imageUrl, _id: token._id});
+      console.log(session)
       return session;
     },
   }

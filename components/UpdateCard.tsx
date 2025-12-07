@@ -1,5 +1,5 @@
 import { Markdown, Slug, Update } from '@/sanity.types';
-import { FormatDate } from '@/sanity/lib/utils'
+import { FormatDate } from '@/lib/utils'
 import Link from 'next/link';
 
 

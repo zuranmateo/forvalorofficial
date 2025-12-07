@@ -7,6 +7,7 @@ import { formSchema } from "@/lib/validation";
 import { z } from 'zod';
 import { toast } from "sonner" 
 import { useRouter } from "next/navigation";
+import { createComment } from "@/lib/actions";
 
 
 export default function CommentForm(){
@@ -29,11 +30,11 @@ export default function CommentForm(){
 
             //console.log(formValues);
 
-            //const result = await createIdea(prevState, formData, description);
-            /*
+            const result = await createComment(prevState, formData, description);
+            
             if(result.status == 'SUCCESS'){
                 toast.success("Your comment was created succesfully")
-            }*/
+            }
 
             router.push(`/comments`)
         }
