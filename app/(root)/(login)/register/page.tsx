@@ -44,7 +44,7 @@ export default function RegisterPage() {
 
   return (
     <main className="main-two">
-      <form onSubmit={handleSubmit} className="login-container">
+      <form onSubmit={handleSubmit} className="login-container my-1">
       <h2 className="mb-4 text-center text-2xl text-textprimary">Register</h2>
 
       {error && <p className="text-red-500 mb-2">{error}</p>}

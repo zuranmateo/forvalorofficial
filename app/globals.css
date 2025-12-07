@@ -90,19 +90,19 @@
     @apply flex items-center justify-center flex-col my-5;
   }
   .main-two{
-    @apply flex items-center h-[calc(100vh-150px)] flex-col justify-center;
+    @apply flex items-center md:h-[calc(100vh-150px)] min-h-[400px] flex-col justify-center;
   }
   .header{
     @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
   }
   .footer{
-    @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center md:flex-row sm:flex-col;
+    @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center md:flex-row flex-col;
   }
   .heading{
-    @apply md:text-9xl sm:text-6xl lg:text-9xl text-textprimary font-cardinal;
+    @apply md:text-7xl text-5xl lg:text-9xl text-textprimary font-cardinal;
   }
   .subheading{
-    @apply m-5 md:text-5xl sm:text-4xl lg:text-5xl text-textprimary font-cardinal;
+    @apply m-5 md:text-4xl text-3xl lg:text-5xl text-textprimary font-cardinal;
   }
   .login-container{
     @apply bg-primary p-8 rounded-lg shadow w-full max-w-md;
@@ -111,7 +111,7 @@
     @apply bg-secondary w-full p-4 text-center text-textprimary text-xl border border-textsecondary rounded;
   }
   .homepage-button{
-    @apply border-textprimary text-textprimary border-4 md:px-10 sm:px-10 py-2 mx-2 lg:text-2xl md:text-2xl sm:text-xl rounded-4xl hover:bg-textprimary hover:text-primary;
+    @apply border-textprimary text-textprimary border-4 md:px-10 px-8 py-2 mx-2 md:text-2xl text-xl rounded-4xl hover:bg-textprimary hover:text-primary;
   }
   .login-text-area{
     @apply w-full p-2 border rounded border-textprimary my-3;
@@ -126,10 +126,10 @@
     @apply grid grid-cols-1;
   }
   .comment-grid{
-    @apply columns-1 sm:columns-2 md:columns-3 lg:columns-3 gap-4 p-4;
+    @apply columns-1 md:columns-2 lg:columns-3 gap-4 p-4;
   }
   .update-card{
-    @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black lg:min-w-[1000px] md:min-w-[1000px] break-all my-4 sm:min-w-screen;
+    @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black lg:min-w-[1000px] md:min-w-[700px] my-4 max-w-screen;
   }
   .comment-card{
     @apply bg-primary border-[3px] border-textprimary rounded-2xl transition-all duration-500 hover:shadow-black max-w-[500px] min-w-[100px] min-h-[50px] my-3 break-inside-avoid;
