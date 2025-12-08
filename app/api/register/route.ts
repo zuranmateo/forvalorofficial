@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       generatedId = Date.now();
 
       existingId = await client.fetch(CHECK_FOR_ID_QUERY, {generatedId})
-      console.log(existingId)
+      //console.log(existingId)
     } while (existingId);
 
  const newUser = await writeClient.create({
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
   }
 });
 
-console.log("Incoming data:", { name, email, password });
+//console.log("Incoming data:", { name, email, password });
 
     return NextResponse.json(
       { message: "User created successfully", userId: newUser._id },

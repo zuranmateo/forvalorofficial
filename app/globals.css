@@ -126,13 +126,13 @@
     @apply grid grid-cols-1;
   }
   .comment-grid{
-    @apply columns-1 md:columns-2 lg:columns-3 gap-4 p-4;
+    @apply columns-1 md:columns-2 lg:columns-3 gap-3 p-4;
   }
   .update-card{
     @apply bg-primary border-[5px] border-black rounded-2xl shadow-black hover:border-textprimary transition-all duration-500 hover:shadow-black lg:min-w-[1000px] md:min-w-[700px] my-4 max-w-screen;
   }
   .comment-card{
-    @apply bg-primary border-[3px] border-textprimary rounded-2xl transition-all duration-500 hover:shadow-black max-w-[500px] min-w-[100px] min-h-[50px] my-3 break-inside-avoid;
+    @apply bg-primary border-[3px] border-textprimary rounded-2xl transition-all duration-500 hover:shadow-black max-w-[500px] min-w-[100px] min-h-[50px] mb-2 break-inside-avoid;
   }
   .update-card-upper-part{
     @apply flex flex-row justify-between rounded-2xl px-5 py-7 min-h-[300px];
@@ -160,6 +160,15 @@
   }
   .comment-form-btn{
     @apply px-5 py-3 my-6 border-textprimary bg-secondary w-fit flex flex-row rounded-xl border-3 text-textprimary text-xl hover:text-secondary hover:bg-textprimary;
+  }
+  .profile-card{
+    @apply text-textprimary bg-primary relative flex flex-col shadow-black md:min-w-[600px] min-w-[400px] sm:min-w-[50px] sm:max-w-[screen] items-center justify-between px-8 py-6 mt-4 rounded-2xl;
+  }
+  .profile-comment-grid{
+    @apply grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 mt-3 mx-5;
+  }
+  .comment-card-profile{
+    @apply bg-primary border-[3px] border-textprimary rounded-2xl transition-all duration-500 hover:shadow-black min-w-[300px];
   }
 }
 

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import  markdownit  from "markdown-it";
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
+import { Edit } from 'lucide-react';
 
 const md = markdownit();
 
@@ -23,7 +24,7 @@ export type CommentCardType = Omit<Comment, "title" | "slug" | "description" | "
 };
 
 
-export default async function CommentCard ({post}:{post: CommentCardType}){
+export default async function CommentCard ({post, authId}:{post: CommentCardType, authId: string}){
 
     const session = await auth();
 
@@ -33,25 +34,35 @@ export default async function CommentCard ({post}:{post: CommentCardType}){
         redirect("./");
     }
   return (
-    <li className='comment-card'>
-        <div className='flex-between text-textprimary px-5 py-7 min-h-[50px] rounded-xl'>
-            <Link href={`/user/${post?.author?._id}`}>
-                <div className='flex flex-row'>
-                    <div>
-                        <Image src={`${post?.author?.image || post?.author?.imageUrl || "/defaultProfileImg.png"}`  }  alt='profile picture' height={50} width={50} className='rounded-full mx-3 h-10 w-10' />
-                    </div>
-                    <div className='flex flex-col'>
-                        <div className='text-white'>
-                            {post?.author?.name}
+    <li className='comment-card-profile'>
+        <div className='flex-between text-textprimary px-5 py-7 rounded-xl'>
+            <div className='flex justify-between'>
+                <Link href={`/user/${post?.author?._id}`}>
+                    <div className='flex flex-row'>
+                        <div>
+                            <Image src={`${post?.author?.image || post?.author?.imageUrl || "/defaultProfileImg.png"}`  }  alt='profile picture' height={50} width={50} className='rounded-full mx-3 h-10 w-10' />
                         </div>
-                        <div className='text-sm text-textgray'>
-                            {post?.author?.email}
+                        <div className='flex flex-col'>
+                            <div className='text-white'>
+                                {post?.author?.name}
+                            </div>
+                            <div className='text-sm text-textgray'>
+                                {post?.author?.email}
+                            </div>
                         </div>
                     </div>
+                </Link>
+                <div>
+                    {session?.user?._id == authId ? 
+                    <Link href={`/editComment/${post?._id}`}>
+                        <Edit className='text-white' />
+                    </Link> : 
+                    ""
+                    }
                 </div>
-            </Link>
+            </div>
             <div className="flex flex-row justify-between rounded-xl">
-                <div className='bg-primary p-4 rounded-xl max-w-[500px] h-fit'>
+                <div className='bg-primary p-4 rounded-xl h-fit'>
                     <h1 className="text-2xl">
                     {post?.title}
                     </h1>
@@ -64,7 +75,7 @@ export default async function CommentCard ({post}:{post: CommentCardType}){
             </div>
             
             <div className='items-center'>
-                <div className='bg-primary p-4 rounded-xl h-fit text-textprimary break-all'>
+                <div className='bg-primary p-4 rounded-xl h-fit text-textprimary'>
                     {parsedContent ? (
                         <article
                             dangerouslySetInnerHTML={{__html : parsedContent}}

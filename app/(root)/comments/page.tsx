@@ -21,10 +21,10 @@ export default async function page(){
         <ul className='comment-grid'>
           {posts?.length > 0 ? (
             posts.map((post: CommentCardType) => (
-              <CommentCard key={post?._id} post={post} />
+              <CommentCard key={post?._id} post={post}/>
             ))
           ):(
-            <p className=''>No updates</p>
+            <p className=''>No comments</p>
           )}
         </ul>
       </section>

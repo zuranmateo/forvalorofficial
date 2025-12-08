@@ -11,7 +11,7 @@ export default async function page(){
     redirect("/");
   }
 
-  console.log(session.user.id);
+  //console.log(session.user.id);
 
   return (
     <div className='main'>
