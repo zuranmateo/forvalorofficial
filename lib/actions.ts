@@ -53,3 +53,56 @@ export const createComment = async (state: any, form: FormData, description: str
         });
     }
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const UpdateProfile= async (state: any, form: FormData, _id: string) =>{
+    const session = await auth();
+
+    if(!session) return parseServerActionResponse({
+        error: 'Not singed in',
+        status: 'Error',
+
+    });
+
+     const name = form.get("name") as string;
+    const email = form.get("email") as string;
+    const file = form.get("file") as File;
+
+    //console.log("\n \n \n \n \n",name, email, file, "\n \n \n \n \n");
+
+    try{
+
+        const buffer = Buffer.from(await file.arrayBuffer());
+
+    const uploadedAsset = await writeClient.assets.upload('image', buffer, {
+        filename: file.name,
+    });
+
+        const result = await writeClient.patch(_id).set({
+        name,
+        email,
+        image: {
+            _type: 'image',
+            asset: {
+                _type: 'reference',
+                _ref: uploadedAsset._id,
+            },
+        },
+    }).commit(); 
+        //console.log(comment);
+
+        return parseServerActionResponse({
+            ...result,
+            error: '',
+            status: 'SUCCESS'
+        })
+    }
+    catch(error){
+        console.log(error);
+
+        return parseServerActionResponse({
+            error: JSON.stringify(error),
+            status: 'ERROR'
+        });
+    }
+
+}

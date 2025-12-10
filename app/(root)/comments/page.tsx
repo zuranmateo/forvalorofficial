@@ -3,6 +3,7 @@ import { client } from '@/sanity/lib/client';
 import { COMMENT_QUERY } from "@/sanity/lib/queries";
 import { CommentCardType } from "@/components/CommentCard";
 import Link from 'next/link';
+import { SanityLive } from '@/sanity/lib/live';
 
 export default async function page(){
   const posts = await client.fetch(COMMENT_QUERY);
@@ -28,6 +29,7 @@ export default async function page(){
           )}
         </ul>
       </section>
+      <SanityLive />
     </main>
   )
 }

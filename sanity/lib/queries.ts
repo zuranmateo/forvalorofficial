@@ -23,7 +23,11 @@ export const USER_BY_ID_QUERY = defineQuery(`
   email,
   password,
   "image": image.asset->url,
-  imageUrl
+  imageUrl,
+  _rev,
+  _type,
+  _createdAt,
+  _updatedAt
 }
 `);
 

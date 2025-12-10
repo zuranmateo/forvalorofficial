@@ -243,7 +243,7 @@ export type CHECK_FOR_EXISTING_AUTHORResult = {
   imageUrl?: string;
 } | null;
 // Variable: USER_BY_ID_QUERY
-// Query: *[_type == "author" && _id == $id][0]{  _id,  id,  name,  email,  password,  "image": image.asset->url,  imageUrl}
+// Query: *[_type == "author" && _id == $id][0]{  _id,  id,  name,  email,  password,  "image": image.asset->url,  imageUrl,  _rev,  _type,  _createdAt,  _updatedAt}
 export type USER_BY_ID_QUERYResult = {
   _id: string;
   id: number | null;
@@ -252,6 +252,10 @@ export type USER_BY_ID_QUERYResult = {
   password: string | null;
   image: string | null;
   imageUrl: string | null;
+  _rev: string;
+  _type: "author";
+  _createdAt: string;
+  _updatedAt: string;
 } | null;
 // Variable: AUTHOR_BY_ID_QUERY
 // Query: *[_type == "author" && email == $email][0]{  _id,  id,  name,  email,  password,  "image": image.asset->url,  imageUrl}
@@ -332,7 +336,7 @@ export type CHECK_FOR_ID_QUERYResult = {
   id: number | null;
 } | null;
 // Variable: COMMENT_BY_AUTHOR_ID_QUERY
-// Query: *[_type == "comment" && defined(slug.current) && author._id == $id] | order(_createdAt desc) {   _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  author -> {   _id, name, email, "image": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type  },  description,   }
+// Query: *[_type == "comment" && defined(slug.current) && author._ref == $id] | order(_createdAt desc) {   _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  author -> {   _id, name, email, "image": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type  },  description,   }
 export type COMMENT_BY_AUTHOR_ID_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -361,13 +365,13 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "\n   *[_type == \"author\" && id == $id][0]{\n    _id,\n    id,\n    name,\n    email,\n    password,\n    imageUrl,\n   } \n": AUTHOR_BY_GITHUB_ID_QUERYResult;
     "\n   *[_type == \"author\" && email == $email][0]\n": CHECK_FOR_EXISTING_AUTHORResult;
-    "\n   *[_type == \"author\" && _id == $id][0]{\n  _id,\n  id,\n  name,\n  email,\n  password,\n  \"image\": image.asset->url,\n  imageUrl\n}\n": USER_BY_ID_QUERYResult;
+    "\n   *[_type == \"author\" && _id == $id][0]{\n  _id,\n  id,\n  name,\n  email,\n  password,\n  \"image\": image.asset->url,\n  imageUrl,\n  _rev,\n  _type,\n  _createdAt,\n  _updatedAt\n}\n": USER_BY_ID_QUERYResult;
     "\n   *[_type == \"author\" && email == $email][0]{\n  _id,\n  id,\n  name,\n  email,\n  password,\n  \"image\": image.asset->url,\n  imageUrl\n}\n": AUTHOR_BY_ID_QUERYResult;
     "\n   *[_type == \"update\" && defined(slug.current)] | order(_createdAt desc){\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_QUERYResult;
     "\n   *[_type == \"update\" && defined(slug.current) && slug.current == $slug][0]{\n  _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  smallDesc,\n  desc,\n  version,\n  views,\n  \"image\": image.asset->url,\n}\n": UPDATES_BY_SLUG_QUERYResult;
     "\n   *[_type == \"update\" && defined(slug.current) && slug.current == $slug][0]{\n      _id, slug, views\n   }\n": UPDATE_VIEWS_QUERYResult;
     "\n   *[_type == \"comment\" && defined(slug.current)] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_QUERYResult;
     "\n   *[_type == \"author\" && id == $generatedId][0]{\n      id\n   }\n": CHECK_FOR_ID_QUERYResult;
-    "\n   *[_type == \"comment\" && defined(slug.current) && author._id == $id] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_BY_AUTHOR_ID_QUERYResult;
+    "\n   *[_type == \"comment\" && defined(slug.current) && author._ref == $id] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_BY_AUTHOR_ID_QUERYResult;
   }
 }

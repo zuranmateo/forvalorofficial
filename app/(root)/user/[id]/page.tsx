@@ -7,6 +7,7 @@ import { Mail, Edit } from 'lucide-react';
 import Link from 'next/link';
 import { CommentCardType } from '@/components/CommentCardProfile';
 import CommentCard from '@/components/CommentCardProfile';
+import { SanityLive } from '@/sanity/lib/live';
 
 export default async function page({params}: {params: Promise<{id: string}>}){
 
@@ -52,6 +53,7 @@ export default async function page({params}: {params: Promise<{id: string}>}){
         )}
       </ul>
       </div>
+      <SanityLive />
     </main>
   )
 }
