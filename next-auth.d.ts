@@ -7,6 +7,7 @@ declare module "next-auth" {
       id: string;
       imageUrl?: string;
       _id: string;
+      provider: string;
     } & DefaultSession["user"];
   }
 
@@ -21,5 +22,6 @@ declare module "next-auth/jwt" {
     id: string;
     imageUrl?: string;
     _id: string;
+    provider: string;
   }
 }

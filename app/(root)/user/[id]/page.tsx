@@ -26,7 +26,7 @@ export default async function page({params}: {params: Promise<{id: string}>}){
         USER PROFILE
       </div>
       <section className='profile-card'>
-        {session?.user?._id == id ? <Link href={`editProfile/${session?.user?._id}`}><Edit className='mx-2 absolute top-2 right-2 text-white'/></Link> : ''}
+        {session?.user?._id == id && session?.user?.provider != 'github' ? <Link href={`editProfile/${session?.user?._id}`}><Edit className='mx-2 absolute top-2 right-2 text-white'/></Link> : ''}
         <h3 className='text-4xl bg-secondary rounded-2xl px-4 py-2 mb-5 mt-3 min-w-[300px] text-center w-fit border-textprimary border-3'>
           {user?.name}
         </h3>

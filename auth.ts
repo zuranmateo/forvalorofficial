@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs";
 
 
 let id: number | null;
-
+let provider: string | null;
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
 
@@ -75,6 +75,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: profile?.id,
         });
 
+        token.provider = "github";
         token.id = user?.id;
         token._id = user?._id
         token.imageUrl = user?.imageUrl;
@@ -83,6 +84,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const user = await client.fetch(AUTHOR_BY_GITHUB_ID_QUERY, {
           id: id,
         });
+        token.provider = "credentials";
         token.id = user?.id;
         token._id = user?._id
       }
@@ -90,7 +92,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     async session({ session, token }){
-      Object.assign(session.user, {id: token.id, imageUrl: token.imageUrl, _id: token._id});
+      Object.assign(session.user, {id: token.id, imageUrl: token.imageUrl, _id: token._id, provider: token.provider});
       //console.log(session)
       return session;
     },
