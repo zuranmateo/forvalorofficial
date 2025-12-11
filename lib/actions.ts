@@ -63,31 +63,45 @@ export const UpdateProfile= async (state: any, form: FormData, _id: string) =>{
 
     });
 
-     const name = form.get("name") as string;
+    const name = form.get("name") as string;
     const email = form.get("email") as string;
-    const file = form.get("file") as File;
+    let file = form.get("file") as File | null;
+
+    if(file && file.size <= 0){
+        file = null;
+    }
 
     //console.log("\n \n \n \n \n",name, email, file, "\n \n \n \n \n");
 
     try{
 
-        const buffer = Buffer.from(await file.arrayBuffer());
+        let result;
+        if(file){
+            const buffer = Buffer.from(await file.arrayBuffer());
 
-    const uploadedAsset = await writeClient.assets.upload('image', buffer, {
-        filename: file.name,
-    });
+            const uploadedAsset = await writeClient.assets.upload('image', buffer, {
+                filename: file.name,
+            });
 
-        const result = await writeClient.patch(_id).set({
-        name,
-        email,
-        image: {
-            _type: 'image',
-            asset: {
-                _type: 'reference',
-                _ref: uploadedAsset._id,
-            },
-        },
-    }).commit(); 
+                result = await writeClient.patch(_id).set({
+                name,
+                email,
+                image: {
+                    _type: 'image',
+                    asset: {
+                        _type: 'reference',
+                        _ref: uploadedAsset._id,
+                    },
+                },
+            }).commit();
+        }
+        else{
+            result = await writeClient.patch(_id).set({
+            name,
+            email,
+            }).commit();
+        }
+         
         //console.log(comment);
 
         return parseServerActionResponse({

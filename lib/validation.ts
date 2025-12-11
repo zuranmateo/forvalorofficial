@@ -11,8 +11,12 @@ export const profileSchema = z.object({
     email: z.email("Invalid email").max(100),
     file: z
     .instanceof(File)
+    .nullable()
+    .optional()
     .refine(
       (file) =>
+        file === null ||
+        file === undefined ||
         file.type === "image/jpeg" ||
         file.type === "image/png" ||
         file.type === "image/jpg"

@@ -30,10 +30,19 @@ export default function EditProfileForm({user}: {user: EditAuthorType}){
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
             try{
-                const formValues = {
+                let formValues;
+                if(file == user.image){
+                    formValues = {
+                    name: formData.get("name") as string,
+                    email: formData.get("email") as string,
+                    }
+                }
+                else{
+                    formValues = {
                     name: formData.get("name") as string,
                     email: formData.get("email") as string,
                     file: formData.get("file") as File
+                    }
                 }
     
                 await profileSchema.parseAsync(formValues);
@@ -57,7 +66,7 @@ export default function EditProfileForm({user}: {user: EditAuthorType}){
                     
                     setErrors(fieldErrors as unknown as Record<string, string>);
                     
-                    //console.log("\n \n \n \n \n",error , "\n \n \n \n \n");
+                    console.log("\n \n \n \n \n",error , "\n \n \n \n \n");
 
                     toast.error("Please check your inputs and try again");
     
