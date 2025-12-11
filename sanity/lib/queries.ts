@@ -122,3 +122,19 @@ export const COMMENT_BY_AUTHOR_ID_QUERY = defineQuery(`
   description,
    }
 `)
+
+export const COMMENT_BY_ID_QUERY = defineQuery(`
+   *[_type == "comment"  && _id == $id][0] {
+   _id,
+  title,
+  _updatedAt,
+  _createdAt,
+  _rev,
+  _type,
+  slug,
+  author -> {
+   _id, name, email, "image": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type
+  },
+  description,
+   }
+`)

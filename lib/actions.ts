@@ -106,3 +106,75 @@ export const UpdateProfile= async (state: any, form: FormData, _id: string) =>{
     }
 
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const UpdateComment = async (state: any, form: FormData, _id: string, desc: string) =>{
+    const session = await auth();
+
+    if(!session) return parseServerActionResponse({
+        error: 'Not singed in',
+        status: 'Error',
+
+    });
+
+     const title = form.get("title") as string;
+
+    //console.log("\n \n \n \n \n",name, email, file, "\n \n \n \n \n");
+
+    try{
+
+        const result = await writeClient.patch(_id).set({
+        title: title,
+        description: desc,
+        }).commit();
+        //console.log(comment);
+
+        return parseServerActionResponse({
+            ...result,
+            error: '',
+            status: 'SUCCESS'
+        })
+    }
+    catch(error){
+        console.log(error);
+
+        return parseServerActionResponse({
+            error: JSON.stringify(error),
+            status: 'ERROR'
+        });
+    }
+
+}
+
+
+export const DeleteComment = async (_id: string) =>{
+    const session = await auth();
+
+    if(!session) return parseServerActionResponse({
+        error: 'Not singed in',
+        status: 'Error',
+
+    });
+
+    //console.log("\n \n \n \n \n",name, email, file, "\n \n \n \n \n");
+
+    try{
+
+        const result = await writeClient.delete(_id);
+        //console.log(comment);
+
+        return parseServerActionResponse({
+            ...result,
+            error: '',
+            status: 'SUCCESS'
+        })
+    }
+    catch(error){
+        console.log(error);
+
+        return parseServerActionResponse({
+            error: JSON.stringify(error),
+            status: 'ERROR'
+        });
+    }
+
+}

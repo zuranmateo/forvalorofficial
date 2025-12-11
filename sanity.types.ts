@@ -358,6 +358,29 @@ export type COMMENT_BY_AUTHOR_ID_QUERYResult = Array<{
   } | null;
   description: string | null;
 }>;
+// Variable: COMMENT_BY_ID_QUERY
+// Query: *[_type == "comment"  && _id == $id][0] {   _id,  title,  _updatedAt,  _createdAt,  _rev,  _type,  slug,  author -> {   _id, name, email, "image": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type  },  description,   }
+export type COMMENT_BY_ID_QUERYResult = {
+  _id: string;
+  title: string | null;
+  _updatedAt: string;
+  _createdAt: string;
+  _rev: string;
+  _type: "comment";
+  slug: Slug | null;
+  author: {
+    _id: string;
+    name: string | null;
+    email: string | null;
+    image: string | null;
+    imageUrl: string | null;
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    _type: "author";
+  } | null;
+  description: string | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -373,5 +396,6 @@ declare module "@sanity/client" {
     "\n   *[_type == \"comment\" && defined(slug.current)] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_QUERYResult;
     "\n   *[_type == \"author\" && id == $generatedId][0]{\n      id\n   }\n": CHECK_FOR_ID_QUERYResult;
     "\n   *[_type == \"comment\" && defined(slug.current) && author._ref == $id] | order(_createdAt desc) {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_BY_AUTHOR_ID_QUERYResult;
+    "\n   *[_type == \"comment\"  && _id == $id][0] {\n   _id,\n  title,\n  _updatedAt,\n  _createdAt,\n  _rev,\n  _type,\n  slug,\n  author -> {\n   _id, name, email, \"image\": image.asset->url, imageUrl, _createdAt, _updatedAt, _rev, _type\n  },\n  description,\n   }\n": COMMENT_BY_ID_QUERYResult;
   }
 }

@@ -17,6 +17,7 @@ export type AuthorType = Omit<Author, "name" | "email" | "image" | "imageUrl"> &
 }
 
 export type CommentCardType = Omit<Comment, "title" | "slug" | "description" | "author"> & {
+    
     title?: string | null;
     slug?: Slug | null;
     description?: Markdown | null;
@@ -54,7 +55,7 @@ export default async function CommentCard ({post, authId}:{post: CommentCardType
                 </Link>
                 <div>
                     {session?.user?._id == authId ? 
-                    <Link href={`/editComment/${post?._id}`}>
+                    <Link href={`editComment/${post?._id}`}>
                         <Edit className='text-white' />
                     </Link> : 
                     ""

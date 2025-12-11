@@ -18,3 +18,8 @@ export const profileSchema = z.object({
         file.type === "image/jpg"
     )
 })
+
+export const EditCommentSchema = z.object({
+    title: z.string().min(3).max(100),
+    desc: z.string().min(5).max(1000),
+})
