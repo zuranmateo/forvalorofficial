@@ -1,13 +1,18 @@
 import React from 'react'
 import Ping from './Ping'
-import { client } from '@/sanity/lib/client'
+import { writeClient } from '@/sanity/lib/write-client';
 import { UPDATE_VIEWS_QUERY } from '@/sanity/lib/queries';
 
 
 export default async function View({slug}: {slug: string}){
 
-    const post  = await client.fetch(UPDATE_VIEWS_QUERY, {slug});
-    //console.log(post)
+    const post  = await writeClient.fetch(UPDATE_VIEWS_QUERY, {slug});
+
+    if(post?.views && post.views >= 0){
+        await writeClient.patch(post._id).set({views: post.views + 1}).commit();
+        post.views = post.views + 1;
+    }
+
   return (
     <>
     <div className="text-textprimary text-md bg-secondary p-3 rounded-2xl flex justify-end items-center mt-5 fixed bottom-3 right-10">

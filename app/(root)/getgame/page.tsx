@@ -1,18 +1,23 @@
-import React from 'react'
+"use client"
+import { toast } from 'sonner';
 
-export default function page(){
+export default function Page(){
   return (
     <main className='main-two'>
       <div className='subheading'>
         DOWNLOAD FOR VALOR
       </div>
       <div className='buy-container my-10'>
-        <div className='homepage-button max-w-[280]'>
+        <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        toast.warning("Sorry, the game is not released yet. You shall be informed in Updates, when the game is released for download.");
+      }}
+    >
+          <button type='submit' className='homepage-button max-w-[280]'>
             Torrent download
-        </div>
-        <div className='homepage-button max-w-[280]'>
-            File download
-        </div>
+          </button>
+        </form>
         <div className='p-5'>
           <div className='text-2xl text-textprimary my-2'>
           DESCRIPTION

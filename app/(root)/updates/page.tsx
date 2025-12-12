@@ -2,7 +2,11 @@ import UpdateCard from '@/components/UpdateCard'
 import { client } from '@/sanity/lib/client'
 import { UPDATES_QUERY } from '@/sanity/lib/queries'
 import { UpdateCardType } from '@/components/UpdateCard'
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Updates",
+};
 export default async function page(){
 
 

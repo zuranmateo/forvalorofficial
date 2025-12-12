@@ -4,7 +4,11 @@ import { COMMENT_QUERY } from "@/sanity/lib/queries";
 import { CommentCardType } from "@/components/CommentCard";
 import Link from 'next/link';
 import { SanityLive } from '@/sanity/lib/live';
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "comments",
+};
 export default async function page(){
   const posts = await client.fetch(COMMENT_QUERY);
   

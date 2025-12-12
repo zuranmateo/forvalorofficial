@@ -8,7 +8,11 @@ import Link from 'next/link';
 import { CommentCardType } from '@/components/CommentCardProfile';
 import CommentCard from '@/components/CommentCardProfile';
 import { SanityLive } from '@/sanity/lib/live';
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "profile",
+};
 export default async function page({params}: {params: Promise<{id: string}>}){
 
   const id = (await params).id;

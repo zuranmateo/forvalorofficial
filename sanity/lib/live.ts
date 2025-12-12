@@ -8,4 +8,6 @@ import { client } from './client'
 
 export const { sanityFetch, SanityLive } = defineLive({
   client,
+  browserToken: false,
+  serverToken: false
 });

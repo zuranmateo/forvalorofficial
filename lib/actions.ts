@@ -74,7 +74,6 @@ export const UpdateProfile= async (state: any, form: FormData, _id: string) =>{
     //console.log("\n \n \n \n \n",name, email, file, "\n \n \n \n \n");
 
     try{
-
         let result;
         if(file){
             const buffer = Buffer.from(await file.arrayBuffer());
