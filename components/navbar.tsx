@@ -23,6 +23,10 @@ export default async function Navbar() {
                 <span className="block bg-secondary py-2 px-4 lg:text-xl md:text-sm text-sm rounded-xl">GET GAME</span>
               </Link>
 
+              <Link href="/updates">
+                <span className="block bg-secondary py-2 px-4 lg:text-xl md:text-sm text-sm rounded-xl">UPDATES</span>
+              </Link>
+
               <Link href="/comments">
                 <span className="block bg-secondary py-2 px-4 lg:text-xl md:text-sm text-sm rounded-xl">COMMENTS</span>
               </Link>
