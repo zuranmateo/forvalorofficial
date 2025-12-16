@@ -19,7 +19,7 @@ export default async function Navbar() {
           {session && session?.user ?
           (
             <>
-              <Link href="/getgame">
+              <Link href="/getgame" className='hidden md:block'>
                 <span className="block bg-secondary py-2 px-4 lg:text-xl md:text-sm text-sm rounded-xl">GET GAME</span>
               </Link>
 
