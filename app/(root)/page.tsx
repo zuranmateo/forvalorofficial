@@ -12,12 +12,12 @@ export default function Home() {
       </div>
       <div className="flex justify-between items-center my-10">
         <Link href={"/updates"}>
-          <button className="homepage-button">
+          <button className="homepage-button cursor-pointer">
             UPDATES
           </button>
         </Link>
         <Link href={"/getgame"}>
-          <button className="homepage-button">
+          <button className="homepage-button cursor-pointer">
             GET GAME
           </button>
         </Link>

@@ -14,7 +14,7 @@ export default function Page(){
         toast.warning("Sorry, the game is not released yet. You shall be informed in Updates, when the game is released for download.");
       }}
     >
-          <button type='submit' className='homepage-button max-w-[280]'>
+          <button type='submit' className='cursor-pointer homepage-button max-w-[280]'>
             Torrent download
           </button>
         </form>

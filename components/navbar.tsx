@@ -8,7 +8,7 @@ export default async function Navbar() {
   const session = await auth();
   return (
     <header className="header">
-        <nav className='flex md:flex-row flex-col justify-between items-center text-xl'>
+        <nav className="flex md:flex-row flex-col justify-between items-center text-xl">
             <Link href="/" className='flex justify-between'>
                 <Image src="/logo-round.png" alt='logo' width={40} height={40}/>
                 <div className='font-cardinal lg:text-3xl md:text-2xl sm:text-xl'>
@@ -35,7 +35,7 @@ export default async function Navbar() {
                 "use server"
                 await signOut({ redirectTo: "/" });
               }}>
-                <button type='submit' className='text-base lg:text-xl'>
+                <button type='submit' className='cursor-pointer text-base lg:text-xl'>
                   Logout
                 </button>
               </form>

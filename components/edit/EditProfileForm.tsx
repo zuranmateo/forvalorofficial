@@ -133,7 +133,7 @@ export default function EditProfileForm({user}: {user: EditAuthorType}){
             </div>
             {errors.title && <p className='comment-form-error'>{errors.title}</p>}
         </div>
-        <button type='submit' className='comment-form-btn' disabled={isPending}>
+        <button type='submit' className='cursor-pointer *:comment-form-btn' disabled={isPending}>
             {isPending ? 'Submitting...' : 'Update profile'} <Send className='size-6 ml-2 mt-1' />
         </button>
     </form>
