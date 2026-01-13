@@ -92,11 +92,11 @@
   .main-two{
     @apply flex items-center md:h-[calc(100vh-150px)] min-h-[400px] flex-col justify-center;
   }
-  .header{
-    @apply px-5 py-3 bg-primary shadow-sm text-textprimary;
+  .header {
+  @apply px-5 py-3 bg-primary shadow-sm text-textprimary ;
   }
-  .footer{
-    @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center md:flex-row flex-col;
+  .footer {
+  @apply px-5 py-3 bg-primary shadow-sm text-textprimary flex justify-between items-center md:flex-row flex-col;
   }
   .heading{
     @apply md:text-7xl text-5xl lg:text-9xl text-textprimary font-cardinal;
@@ -175,13 +175,11 @@
   }
 }
 
-
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+  html, 
   body {
-    @apply bg-background text-foreground;
+    @apply  bg-background min-h-screen overflow-x-hidden;
+    overscroll-behavior-y: none;
   }
 }
 

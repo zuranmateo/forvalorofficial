@@ -45,7 +45,7 @@ export default function RegisterPage() {
 
   return (
     <main className="main-two">
-      <form onSubmit={handleSubmit} className="login-container my-1">
+      <form onSubmit={handleSubmit} className="text-white login-container my-1">
       <h2 className="mb-4 text-center text-2xl text-textprimary">Register</h2>
 
       {error && <p className="text-red-500 mb-2">{error}</p>}
@@ -89,7 +89,7 @@ export default function RegisterPage() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full p-2 my-5 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="cursor-pointer w-full p-2 my-5 bg-blue-500 text-white rounded hover:bg-blue-600"
       >
         {loading ? "Registering..." : "Register"}
       </button>
