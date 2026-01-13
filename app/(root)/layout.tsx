@@ -9,11 +9,12 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const session = await auth();
+
   if(session && session.user._id == null){
     signOut();
   }
+  
   return (
     <main>
         <Navbar />
