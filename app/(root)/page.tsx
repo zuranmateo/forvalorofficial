@@ -47,7 +47,7 @@ export default function Home() {
         <ul className="text-xl text-textprimary bg-secondary w-fit p-5 rounded-xl">
           <li>Author: Mateo Žuran</li>
           <li>Release date: 20.02.2025</li>
-          <li>contact: zuran.mateo@scv.si</li>
+          <li>Contact: zuran.mateo@scv.si</li>
         </ul>
         <Image src="/formationExample.png" alt="formation example" width={500} height={500} className="md:py-4 py-2 px-1 md:px-10 rounded-2xl md:w-[1000px] w-[450px] "/>
       </div>
