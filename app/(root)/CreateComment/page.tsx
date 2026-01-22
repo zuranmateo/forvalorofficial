@@ -1,9 +1,8 @@
-import React from 'react'
-import CommentForm from '@/components/CommentForm';
-import { redirect } from 'next/navigation';
-import { auth } from '@/auth';
+import CommentForm from "@/components/CommentForm"
+import { redirect } from "next/navigation"
+import { auth } from "@/auth";
 
-export default async function page(){
+export default async function Page(){
 
   const session = await auth();
   
@@ -11,11 +10,11 @@ export default async function page(){
     redirect("/");
   }
 
-  //console.log(session.user.id);
-
   return (
-    <div className='main'>
-      <h1 className='subheading'>CREATE COMMENT</h1>
+    <div className="main">
+      <h1 className="subheading">
+        CREATE COMMENT
+      </h1>
       <CommentForm />
     </div>
   )

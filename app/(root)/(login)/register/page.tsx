@@ -10,10 +10,11 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState(""); // dodano stanje
+  const [repeatPassword, setRepeatPassword] = useState(""); // Dodano stanje
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(""); // za prikaz napake
+  const [error, setError] = useState(""); // Za prikaz napake
 
+  // Funkcija za pošiljanje registracijske forme
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -26,80 +27,87 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
 
-    const res = await fetch("/api/register", {
+     // Pošlji podatke na API endpoint
+    const Res = await fetch("/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     });
 
-    const data = await res.json();
+    const data = await Res.json();
     setLoading(false);
 
-    if (res.ok) {
+    // Če je registracija uspešna
+    if (Res.ok) {
       toast.success("Registration successful! You can now log in.");
       router.push("./login");
-    } else {
+    }
+
+    // Če pride do napake
+    else {
       setError(data.error || "Something went wrong");
     }
   };
 
   return (
     <main className="main-two">
-      <form onSubmit={handleSubmit} className="login-container my-1">
-      <h2 className="mb-4 text-center text-2xl text-textprimary">Register</h2>
+      <form onSubmit={handleSubmit} className="text-white login-container my-1">
 
-      {error && <p className="text-red-500 mb-2">{error}</p>}
+        <h2 className="mb-4 text-center text-2xl text-textprimary">Register</h2>
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="login-text-area"
-        required
-      />
+        {error && <p className="text-red-500 mb-2">{error}</p>}
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="login-text-area"
-        required
-      />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="login-text-area"
+          required
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="login-text-area"
-        required
-      />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="login-text-area"
+          required
+        />
 
-      <input
-        type="password"
-        placeholder="Repeat Password"
-        value={repeatPassword} // dodano pravilno stanje
-        onChange={(e) => setRepeatPassword(e.target.value)} // popravljeno
-        className="login-text-area"
-        required
-      />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-text-area"
+          required
+        />
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full p-2 my-5 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        {loading ? "Registering..." : "Register"}
-      </button>
-      <p className="text-center text-sm mt-3">
-  already have an account?{" "}
-  <Link href="./login" className="text-blue-600 underline">
-    Login
-  </Link>
-</p>
-    </form>
+        <input
+          type="password"
+          placeholder="Repeat Password"
+          value={repeatPassword} // dodano pravilno stanje
+          onChange={(e) => setRepeatPassword(e.target.value)} // popravljeno
+          className="login-text-area"
+          required
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="cursor-pointer w-full p-2 my-5 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          {loading ? "Registering..." : "Register"}
+        </button>
+
+        <p className="text-center text-sm mt-3">
+            Already have an account?{" "}
+          <Link href="./login" className="text-blue-600 underline">
+            Login
+          </Link>
+        </p>
+      </form>
     </main>
   );
 }

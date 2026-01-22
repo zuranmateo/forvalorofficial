@@ -1,31 +1,38 @@
 "use client"
-import { toast } from 'sonner';
+import { toast } from "sonner";
 
 export default function Page(){
   return (
-    <main className='main-two'>
-      <div className='subheading'>
+    <main className="main-two">
+      <div className="subheading">
         DOWNLOAD FOR VALOR
       </div>
-      <div className='buy-container my-10'>
+
+      <div className="buy-container my-10">
         <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        toast.warning("Sorry, the game is not released yet. You shall be informed in Updates, when the game is released for download.");
-      }}
-    >
-          <button type='submit' className='homepage-button max-w-[280]'>
+          onSubmit={(e) => {
+            e.preventDefault();
+            toast.warning("Sorry, the game is not released yet. You shall be informed in Updates, when the game is released for download.");
+          }}>
+
+          <button 
+            type="submit" 
+            className="cursor-pointer homepage-button max-w-[280]"
+          >
             Torrent download
           </button>
+
         </form>
-        <div className='p-5'>
-          <div className='text-2xl text-textprimary my-2'>
-          DESCRIPTION
-        </div>
-        <div className='text-center text-textprimary text-xl'>
+
+        <div className="p-5">
+          <div className="text-2xl text-textprimary my-2">
+            DESCRIPTION
+          </div>
+
+          <div className="text-center text-textprimary text-xl">
             Manage you castle, lead your army and fight the opponent that would love to destroy you.
             Use strategy to destory his keep and win. Be the best king, by proving yourself. Fight for glory, fight for Valor.
-        </div>
+          </div>
         </div>
       </div>
     </main>
