@@ -1,32 +1,37 @@
-import Ping from "./Ping"
+import Ping from "./Ping";
 import { writeClient } from "@/sanity/lib/write-client";
 import { UPDATE_VIEWS_QUERY } from "@/sanity/lib/queries";
 
-// Server komponenta za beleženje in prikaz števila ogledov objave
-export default async function View({slug}: {slug: string}){
+export default async function View({ slug }: { slug: string }) {
 
-    const post  = await writeClient.fetch(UPDATE_VIEWS_QUERY, {slug});
+  // ❗ prepreči samodejne re-renderje / revalidacije
+  const post = await writeClient.fetch(
+    UPDATE_VIEWS_QUERY,
+    { slug },
+    { cache: "no-store" }
+  );
 
-    // Če število ogledov obstaja in je >= 0,
-    // poveča views za 1 in spremembo shrani
-    if(post?.views && post.views >= 0){
-        await writeClient.patch(post._id).set({views: post.views + 1}).commit();
-        post.views = post.views + 1;
-    }
+  // ✅ deluje tudi za views = 0
+  if (post?.views !== undefined && post.views != null) {
+    const newViews = post.views + 1;
+
+    await writeClient
+      .patch(post._id)
+      .set({ views: newViews })
+      .commit();
+
+    post.views = newViews;
+  }
 
   return (
-    <>
     <div className="text-textprimary text-md bg-secondary p-3 rounded-2xl flex justify-end items-center mt-5 fixed bottom-3 right-10">
-        <div className="absolute -top-1 -right-1">
-            <Ping />{/* Ping animacija za vizualni efekt */}
-        </div>
+      <div className="absolute -top-1 -right-1">
+        <Ping />
+      </div>
 
-        <p className="">
-            <span>
-                views: {post?.views}
-            </span>
-        </p>
+      <p>
+        <span>views: {post?.views}</span>
+      </p>
     </div>
-    </>
-  )
+  );
 }

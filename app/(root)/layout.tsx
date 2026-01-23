@@ -1,7 +1,6 @@
 import { auth } from "@/auth"
 import Footer from "@/components/footer"
 import Navbar from "@/components/navbar"
-import { SanityLive } from "@/sanity/lib/live"
 import { signOut } from "next-auth/react";
 
 export default async function Layout({
@@ -20,7 +19,7 @@ export default async function Layout({
         <Navbar />
         {children}
         <Footer />
-        <SanityLive />
+        
     </main>
   );
 }
