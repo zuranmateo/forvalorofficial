@@ -4,14 +4,13 @@ import { UPDATE_VIEWS_QUERY } from "@/sanity/lib/queries";
 
 export default async function View({ slug }: { slug: string }) {
 
-  // ❗ prepreči samodejne re-renderje / revalidacije
+  // Prepreči samodejne re-renderje
   const post = await writeClient.fetch(
     UPDATE_VIEWS_QUERY,
     { slug },
     { cache: "no-store" }
   );
 
-  // ✅ deluje tudi za views = 0
   if (post?.views !== undefined && post.views != null) {
     const newViews = post.views + 1;
 
@@ -28,7 +27,6 @@ export default async function View({ slug }: { slug: string }) {
       <div className="absolute -top-1 -right-1">
         <Ping />
       </div>
-
       <p>
         <span>views: {post?.views}</span>
       </p>

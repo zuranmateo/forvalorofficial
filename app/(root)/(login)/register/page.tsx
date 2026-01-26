@@ -95,6 +95,7 @@ export default function RegisterPage() {
 
         <button
           type="submit"
+          name="reg"
           disabled={loading}
           className="cursor-pointer w-full p-2 my-5 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
