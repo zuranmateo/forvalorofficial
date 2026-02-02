@@ -11,7 +11,7 @@ let id: number | null;
 let provider: string | null;
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
-
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "Credentials",

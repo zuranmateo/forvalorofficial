@@ -3,6 +3,7 @@ import { client } from "@/sanity/lib/client"
 import { UPDATES_QUERY } from "@/sanity/lib/queries"
 import { UpdateCardType } from "@/components/UpdateCard"
 import type { Metadata } from "next";
+import { SanityLive } from "@/sanity/lib/live"
 
 export const metadata: Metadata = {
   title: "Updates",
@@ -35,6 +36,7 @@ export default async function Page(){
 
         </ul>
       </section>
+      <SanityLive />
     </main>
   )
 }

@@ -33,7 +33,7 @@ export default function LoginPage() {
 
   return (
     <div className="main-two">
-      <div className="bg-primary p-8 rounded-lg shadow w-full max-w-md">
+      <div className="text-white bg-primary p-8 rounded-lg shadow w-full max-w-md">
 
         <h2 className="text-2xl font-semibold text-center mb-6">Log In</h2>
 
@@ -56,7 +56,8 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full p-2 bg-secondary text-textprimary rounded hover:bg-textprimary hover:text-secondary"
+            name="login"
+            className="cursor-pointer w-full p-2 bg-secondary text-textprimary rounded hover:bg-textprimary hover:text-secondary"
             disabled={loading}
           >
             {loading ? "Logging in..." : "Log In"}
@@ -66,7 +67,7 @@ export default function LoginPage() {
         {/* Prijva z GitHub računom*/}
         <button
           onClick={() => signIn("github")}
-          className="w-full mt-4 p-2 bg-black text-white rounded hover:bg-white hover:text-black"
+          className="cursor-pointer w-full mt-4 p-2 bg-black text-white rounded hover:bg-white hover:text-black"
         >
           Login with GitHub
         </button>

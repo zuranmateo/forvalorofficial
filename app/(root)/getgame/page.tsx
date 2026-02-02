@@ -16,7 +16,8 @@ export default function Page(){
           }}>
 
           <button 
-            type="submit" 
+            type="submit"
+            name="btn" 
             className="cursor-pointer homepage-button max-w-[280]"
           >
             Torrent download

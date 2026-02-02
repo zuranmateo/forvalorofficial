@@ -64,7 +64,6 @@ export default async function Page (props: { params: Promise<{ slug: string }> }
             </div>
 
           </div>
-
         </section>
         ) : (
           // Če objava ne obstaja
@@ -72,7 +71,6 @@ export default async function Page (props: { params: Promise<{ slug: string }> }
             <div className="bg-primary max-w-[1000px] my-10 p-7 text-center rounded min-w-[400px] text-textprimary text-3xl">
               No update found
             </div>
-
         </section>
       )}
     </>
