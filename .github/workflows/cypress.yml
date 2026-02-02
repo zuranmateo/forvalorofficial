@@ -42,3 +42,6 @@ jobs:
 
       - name: Run Cypress
         run: npm run test:e2e
+        
+      - name: Run Cypress Component tests
+        run: npm run test:component
