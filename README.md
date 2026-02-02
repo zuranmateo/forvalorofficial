@@ -77,6 +77,7 @@ Git
 
         pnpm install
 
+     ```Opozorilo: pnpm nstall vam lahko povzroča probleme, v tem primeru uporabite npm install.```
 
 
 3. Zaženi development server:
@@ -87,7 +88,7 @@ Git
 
         pnpm dev
 
-
+   
 ---
 
 ## 🎈 Uporaba

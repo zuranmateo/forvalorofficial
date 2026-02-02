@@ -1,7 +1,6 @@
-import { auth } from "@/auth";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
-import { SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth"
+import Footer from "@/components/footer"
+import Navbar from "@/components/navbar"
 import { signOut } from "next-auth/react";
 
 export default async function Layout({
@@ -9,17 +8,18 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const session = await auth();
+
   if(session && session.user._id == null){
     signOut();
   }
+  
   return (
     <main>
         <Navbar />
         {children}
         <Footer />
-        <SanityLive />
+        
     </main>
   );
 }

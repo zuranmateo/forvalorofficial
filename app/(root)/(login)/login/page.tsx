@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Funkcija za prijavo uporabnika
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // Prepreči reload strani
     setLoading(true);
 
-    const res = await signIn("credentials", {
+    const Res = await signIn("credentials", {
       email,
       password,
       redirect: false,
@@ -22,7 +23,8 @@ export default function LoginPage() {
 
     setLoading(false);
 
-    if (!res?.error){
+    // Če ni napake, je prijava uspešna
+    if (!Res?.error){
       toast.success("Successfull login")
       window.location.href = "./";
     }
@@ -54,6 +56,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
+            name="login"
             className="cursor-pointer w-full p-2 bg-secondary text-textprimary rounded hover:bg-textprimary hover:text-secondary"
             disabled={loading}
           >
@@ -61,19 +64,20 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* GitHub login */}
+        {/* Prijva z GitHub računom*/}
         <button
           onClick={() => signIn("github")}
           className="cursor-pointer w-full mt-4 p-2 bg-black text-white rounded hover:bg-white hover:text-black"
         >
-      Login with GitHub
-    </button>
-    <p className="text-center text-sm mt-3">
-  Don’t have an account?{" "}
-  <Link href="./register" className="text-blue-600 underline">
-    Register
-  </Link>
-</p>
+          Login with GitHub
+        </button>
+
+        <p className="text-center text-sm mt-3">
+          Don’t have an account?{" "}
+        <Link href="./register" className="text-blue-600 underline">
+          Register
+        </Link>
+        </p>
       </div>
     </div>
   );
