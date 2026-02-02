@@ -110,7 +110,7 @@ export default function CommentForm(){
             {errors.description && <p className="comment-form-error">{errors.description}</p>}
         </div>
 
-        <button type="submit" className="cursor-pointer comment-form-btn" disabled={isPending}>
+        <button name="subm" type="submit" className="cursor-pointer comment-form-btn" disabled={isPending}>
             {isPending ? "Submitting..." : "Post comment"} <Send className="size-6 ml-2 mt-1" />
         </button>
     </form>

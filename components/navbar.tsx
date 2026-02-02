@@ -44,7 +44,7 @@ export default async function Navbar() {
                   "use server"
                   await signOut({ redirectTo: "/" });
                 }}>
-                  <button type="submit" className="cursor-pointer text-base lg:text-xl">
+                  <button type="submit" name="logout" className="cursor-pointer text-base lg:text-xl">
                     Logout
                   </button>
                 </form>

@@ -34,9 +34,14 @@ export default async function Page({params}: {params: Promise<{id: string}>}){
        {/* Kartica s podatki o uporabniku */}
         <section className="profile-card">
           {session?.user?._id == id && session?.user?.provider != "github" ? 
-            <Link href={`editProfile/${session?.user?._id}`}>
-              <Edit className="mx-2 absolute top-2 right-2 text-white"/>
-          </Link> : ''}
+            <Link
+              href={`editProfile/${session?.user?._id}`}
+              data-cy="edit-profile"
+              className="absolute top-2 right-2 p-2"
+            >
+              <Edit className="text-white" />
+            </Link>
+          : ''}
           
           {/* Ime uporabnika */}
           <h3 className="text-4xl bg-secondary rounded-2xl px-4 py-2 mb-5 mt-3 min-w-[300px] text-center w-fit border-textprimary border-3">

@@ -56,6 +56,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
+            name="login"
             className="w-full p-2 bg-secondary text-textprimary rounded hover:bg-textprimary hover:text-secondary"
             disabled={loading}
           >
