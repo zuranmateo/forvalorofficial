@@ -1,5 +1,5 @@
-import Ping from "./Ping";
-import { writeClient } from "@/sanity/lib/write-client";
+import Ping from "./Ping"
+import { writeClient } from "@/sanity/lib/write-client"
 import { UPDATE_VIEWS_QUERY } from "@/sanity/lib/queries";
 
 export default async function View({ slug }: { slug: string }) {

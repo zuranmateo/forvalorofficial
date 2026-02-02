@@ -64,7 +64,6 @@ export default function Home() {
             <div>
               We are making the game for research project in school. We are using unity hub to make the game, and blender to make the models. We are doing our best to make the game in time and ready to play.
             </div>
-
           </div>
         </div>
 
@@ -73,6 +72,7 @@ export default function Home() {
           <li>Release date: 20.02.2025</li>
           <li>Contact: zuran.mateo@scv.si</li>
         </ul>
+        
         <Image 
           src="/formationExample.png" 
           alt="formation example" 

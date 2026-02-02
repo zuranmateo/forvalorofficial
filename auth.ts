@@ -32,8 +32,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   if (!user) return null;
   if (!user.password) return null;
-  //console.log(user);
-  //console.log(user.image,)
 
   const isCorrect = await bcrypt.compare(password, user.password);
   if (!isCorrect) return null;
@@ -93,7 +91,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     async session({ session, token }){
       Object.assign(session.user, {id: token.id, imageUrl: token.imageUrl, _id: token._id, provider: token.provider});
-      //console.log(session)
       return session;
     },
   }

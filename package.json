@@ -11,7 +11,8 @@
     "prebuild": "npm run typegen",
     "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate",
     "cypress:open": "cypress open",
-    "test:e2e": "cypress run"
+    "test:e2e": "cypress run",
+    "test:component": "cypress run --component"
   },
   "dependencies": {
     "@sanity/client": "^7.12.1",
