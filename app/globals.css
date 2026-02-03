@@ -179,7 +179,6 @@
   html, 
   body {
     @apply  bg-background min-h-screen overflow-x-hidden;
-    overscroll-behavior-y: none;
   }
 }
 
